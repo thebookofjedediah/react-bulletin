@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import { getAllPosts } from '../graphql/queries/posts'
-import PostPreview from '../components/PostPreview'
+import Layout from '../components/Layout'
+import Loader from '../components/Loader'
+import Grid from 'material-ui/Grid'
+import RenderPost from '../components/renderPostPreview'
+import { Helmet } from 'react-helmet'
 
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
@@ -10,20 +14,21 @@ class Home extends Component {
   render () {
     const posts = this.props.data.posts
     return (
-      <div>
-        {!posts && <h1>Loading...</h1>}
-        {posts &&
-          posts.edges.map(post => (
-            <PostPreview
-              key={post.node.id}
-              id={post.node.id}
-              date={post.node.date}
-              // imageURL={post.node.featuredImage.sourceUrl}
-              title={post.node.title}
-            />
-          ))}
-      </div>
+      <Layout>
+        <Helmet>
+          <title>Home | Bulletin - Franciscan University of Steubenville</title>
+        </Helmet>
+        {!posts && <Loader />}
+        {posts && (
+          <Grid container justify='center'>
+            <Grid item xs={12} sm={8} md={6}>
+              <RenderPost posts={posts} />
+            </Grid>
+          </Grid>
+        )}
+      </Layout>
     )
   }
 }
+
 export default graphql(getAllPosts)(Home)
