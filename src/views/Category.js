@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-// import { fetchCategories, setSorting, setCommentSorting } from '../actions'
 // import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
@@ -10,8 +8,4 @@ class Category extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  posts: state.getPosts
-})
-
-export default connect(mapStateToProps)(Category)
+export default Category
