@@ -3,6 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducers'
 import { Provider } from 'react-redux'
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 import thunk from 'redux-thunk'
 import './App.css'
 
@@ -28,18 +32,27 @@ const store = createStore(
   composeEnhancers(applyMiddleware(logger, thunk))
 )
 
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'http://bulletinlocaltest.local/' }),
+  cache: new InMemoryCache()
+})
+
+// url: 'http://bulletinlocaltest.local/graphql'
+
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/:category' component={Category} />
-            <Route path='/:category/:post_id' component={PostDetail} />
-          </Switch>
-        </BrowserRouter>
-      </Provider>
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/:category' component={Category} />
+              <Route path='/:category/:post_id' component={PostDetail} />
+            </Switch>
+          </BrowserRouter>
+        </Provider>
+      </ApolloProvider>
     )
   }
 }
