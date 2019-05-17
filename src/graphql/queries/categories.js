@@ -1,15 +1,19 @@
 import gql from 'graphql-tag'
+import { postFragment } from '../fragments'
 
-export const getAllPosts = gql`
-  query getAllCategories {
+export const getCategories = gql`
+  query getAllPosts {
     categories {
       edges {
         node {
           id
-          slug
-          title
+          name
+          posts {
+            ...PostData
+          }
         }
       }
     }
   }
+  ${postFragment}
 `
