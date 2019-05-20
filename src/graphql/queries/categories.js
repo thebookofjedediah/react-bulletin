@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { postFragment } from '../fragments'
+import { postToCategory } from '../fragments'
 
 export const getCategories = gql`
   query getAllPosts {
@@ -15,5 +15,5 @@ export const getCategories = gql`
       }
     }
   }
-  ${postFragment}
+  ${postToCategory}
 `
