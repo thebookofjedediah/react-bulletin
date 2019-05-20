@@ -1,22 +1,7 @@
 import gql from 'graphql-tag'
 
 export const postFragment = gql`
-  fragment PostData on RootQueryToPostConnection {
-    edges {
-      node {
-        id
-        title
-        date
-        featuredImage {
-          sourceUrl
-        }
-      }
-    }
-  }
-`
-
-export const postToCategory = gql`
-  fragment PostData on CategoryToPostConnection {
+  fragment PostData on postsConnection {
     edges {
       node {
         id
