@@ -8,7 +8,7 @@ import styles from './styles'
 
 class Layout extends Component {
   state = {
-    open: true,
+    open: false,
     anchorEl: null,
     openMenu: false
   }
