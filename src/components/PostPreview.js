@@ -4,10 +4,17 @@ import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import { Link } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles'
+import { blue, grey } from 'material-ui/colors'
 
 const styles = {
   card: {
     marginBottom: 15
+  },
+  titleColor: {
+    color: blue[800]
+  },
+  dateColor: {
+    color: grey[500]
   },
   media: {
     height: 500
@@ -24,10 +31,18 @@ const PostPreview = ({ classes, title, imageURL, date, id }) => {
     <Card className={classes.card}>
       {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       <CardContent>
-        <Typography type='headline' component='h2'>
+        <Typography
+          type='headline'
+          className={classes.titleColor}
+          component='h2'
+        >
           {title}
         </Typography>
-        <Typography type='subheading' component='h3'>
+        <Typography
+          className={classes.dateColor}
+          type='subheading'
+          component='h3'
+        >
           {postDate}
         </Typography>
       </CardContent>
