@@ -9,10 +9,6 @@ import { Helmet } from 'react-helmet'
 // import '../styles/app.css'
 
 class PostDetail extends Component {
-  constructor () {
-    super()
-    this.renderPost = this.renderPost.bind(this)
-  }
   render () {
     const isLoading = this.props.data.loading
     return (
@@ -25,7 +21,7 @@ class PostDetail extends Component {
       </Layout>
     )
   }
-  renderPost () {
+  renderPost = () => {
     const post = this.props.data.post
     const date = new Date(post.date).toLocaleDateString()
     return (
