@@ -7,6 +7,7 @@ export const postFragment = gql`
         id
         title
         date
+        slug
         featuredImage {
           sourceUrl
         }
@@ -15,17 +16,40 @@ export const postFragment = gql`
   }
 `
 
-export const postToCategory = gql`
-  fragment PostData on CategoryToPostConnection {
+export const categoriesFragment = gql`
+  fragment CategoyData on CategoryToPostConnection {
     edges {
       node {
         id
-        title
-        date
-        featuredImage {
-          sourceUrl
-        }
+        name
+        slug
       }
     }
   }
 `
+// import { gql } from "graphql-tag"
+// export const postFragment = gql`
+//   fragment PostData on postsConnection {
+//     edges {
+//       node {
+//         id
+//         title
+//         date
+//         featuredImage {
+//           sourceUrl
+//         }
+//       }
+//     }
+//   }
+// `
+//
+// export const categoriesFragment = gql`
+//   fragment CategoryData on categoriesConnection {
+//     edges {
+//       node {
+//         id
+//         name
+//       }
+//     }
+//   }
+// `
