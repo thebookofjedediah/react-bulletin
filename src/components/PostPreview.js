@@ -17,7 +17,7 @@ const styles = {
     color: grey[500]
   },
   media: {
-    height: 500
+    height: 250
   },
   link: {
     color: 'inherit',
@@ -25,10 +25,10 @@ const styles = {
   }
 }
 
-const PostPreview = ({ classes, title, imageURL, date, id }) => {
+const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
   const postDate = new Date(date).toLocaleDateString()
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} style={style}>
       {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       <CardContent>
         <Typography
