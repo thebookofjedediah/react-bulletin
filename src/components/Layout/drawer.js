@@ -5,12 +5,19 @@ import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
 import ListSubheader from 'material-ui/List/ListSubheader'
+import ClockIcon from 'material-ui-icons/AccessTime'
 import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import AlarmClock from 'material-ui-icons/Alarm'
 import { graphql } from 'react-apollo'
 
-const SideComponent = ({ classes, open, handleDrawerClose, data }) => {
+const SideComponent = ({
+  classes,
+  open,
+  handleDrawerClose,
+  data,
+  viewType
+}) => {
   return (
     <div>
       <Drawer
@@ -63,6 +70,16 @@ const SideComponent = ({ classes, open, handleDrawerClose, data }) => {
               </Link>
             ))}
           <Divider />
+          <ListItem button>
+            <ListItemIcon>
+              <ClockIcon />
+            </ListItemIcon>
+            <ListItemText inset primary='Filter By Date' />
+          </ListItem>
+          <Divider />
+          <ListSubheader>Submit Announcement</ListSubheader>
+          <ListSubheader>Classic Mode</ListSubheader>
+          <ListSubheader>Help</ListSubheader>
         </div>
       </Drawer>
     </div>
