@@ -4,14 +4,13 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
-// import ViewStreamIcon from 'material-ui-icons/ViewStream'
+import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import ViewQuiltIcon from 'material-ui-icons/ViewQuilt'
 import SearchIcon from 'material-ui-icons/Search'
 import PrintIcon from 'material-ui-icons/Print'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import Menu, { MenuItem } from 'material-ui/Menu'
 import classNames from 'classnames'
-// {viewtype === "grid" ? <ViewStreamIcon /> : <ViewQuiltIcon />}
 const TopBar = ({
   classes,
   open,
@@ -20,7 +19,8 @@ const TopBar = ({
   handleClick,
   anchorEl,
   handleRequestClose,
-  handleLayoutChange
+  handleLayoutChange,
+  viewType
 }) => {
   return (
     <div>
@@ -50,7 +50,7 @@ const TopBar = ({
             color='primary'
             aria-label='More'
           >
-            <ViewQuiltIcon />
+            {viewType === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
           </IconButton>
           <IconButton color='primary' aria-label='More'>
             <PrintIcon />
