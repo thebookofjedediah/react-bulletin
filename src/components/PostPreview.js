@@ -1,10 +1,11 @@
 import React from 'react'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
-import { Link } from 'react-router-dom'
+import Divider from '@material-ui/core/Divider'
+import Typography from '@material-ui/core/Typography'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
+import Attachements from './Attachments'
 
 const styles = {
   card: {
@@ -16,6 +17,9 @@ const styles = {
   dateColor: {
     color: grey[500]
   },
+  categoryColor: {
+    color: '#ffb41f'
+  },
   media: {
     height: 250
   },
@@ -25,19 +29,29 @@ const styles = {
   }
 }
 
-const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
+const PostPreview = ({
+  classes,
+  title,
+  imageURL,
+  date,
+  id,
+  style,
+  category,
+  content
+}) => {
   const postDate = new Date(date).toLocaleDateString()
   return (
     <Card className={classes.card} style={style}>
       {imageURL && <CardMedia className={classes.media} image={imageURL} />}
       <CardContent>
-        <Typography
-          type='headline'
-          className={classes.titleColor}
-          component='h2'
-        >
+        <Typography type='caption' className={classes.categoryColor}>
+          {category.toUpperCase()}
+        </Typography>
+
+        <Typography type='headline' className={classes.titleColor} variant='h4'>
           {title}
         </Typography>
+
         <Typography
           className={classes.dateColor}
           type='subheading'
@@ -45,13 +59,25 @@ const PostPreview = ({ classes, title, imageURL, date, id, style }) => {
         >
           {postDate}
         </Typography>
+
+        <Typography
+          type='body2'
+          gutterBottom
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+        {/*
+        TODO:
+         - Add logic to test if there are attachments
+        */}
+        <Attachements
+        // pass the attachments as props here
+        />
       </CardContent>
+      <Divider />
       <CardActions>
-        <Link className={classes.link} to={`/post/${id}`}>
-          <Button dense color='primary'>
-            Read More
-          </Button>
-        </Link>
+        <Button href={`/post/${id}`} dense color='primary'>
+          Read More
+        </Button>
       </CardActions>
     </Card>
   )
