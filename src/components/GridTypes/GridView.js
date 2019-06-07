@@ -1,24 +1,30 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
+import Masonry from 'react-masonry-component'
+import '../../styles/grid.css'
 import PostPreview from '../PostPreview'
 
 const GridView = ({ posts }) => (
-  <Grid container>
-    {posts.edges.map(post => (
-      <Grid key={post.node.id} item xs={6} sm={4} md={6} lg={6}>
-        <PostPreview
-          id={post.node.id}
-          date={post.node.date}
-          imageURL={
-            post.node.featuredImage && post.node.featuredImage.sourceUrl
-          }
-          title={post.node.title}
-          category={post.node.categories.edges[0].node.name}
-          content={post.node.content}
-        />
-      </Grid>
-    ))}
-  </Grid>
+  <div className='row'>
+    <div className='container-fluid'>
+      <Masonry>
+        {posts.edges.map(post => (
+          <div className='col s12 m12 l6 xl4' key={post.node.id}>
+            <PostPreview
+              date={post.node.date}
+              imageURL={
+                post.node.featuredImage && post.node.featuredImage.sourceUrl
+              }
+              id={post.node.id}
+              title={post.node.title}
+              category={post.node.categories.edges[0].node.name}
+              content={post.node.content}
+              trim
+            />
+          </div>
+        ))}
+      </Masonry>
+    </div>
+  </div>
 )
 
 export default GridView
