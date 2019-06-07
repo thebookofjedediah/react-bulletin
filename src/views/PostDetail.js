@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet'
 import Typography from 'material-ui/Typography'
 import { blue, grey } from 'material-ui/colors'
 import { withStyles } from 'material-ui/styles'
-// import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 // import '../styles/app.css'
 
 const styles = {
@@ -64,7 +64,9 @@ const RenderPost = ({ data, classes }) => {
         {post.categories.edges[0].node.name.toUpperCase()}
       </Typography>
       <Typography type='headline' className={classes.titleColor} variant='h4'>
-        {post.title}
+        <Link to={`/post/${post.id}`}>
+          <h1>{post.title}</h1>
+        </Link>
       </Typography>
       <Typography type='subheading' component='h4'>
         {date}
