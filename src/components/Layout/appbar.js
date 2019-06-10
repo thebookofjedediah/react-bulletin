@@ -36,7 +36,7 @@ const TopBar = ({
             <MenuIcon />
           </IconButton>
           <Typography
-            type='display1'
+            variant='display1'
             color='inherit'
             className={classNames(classes.flex, classes.typo)}
             noWrap
