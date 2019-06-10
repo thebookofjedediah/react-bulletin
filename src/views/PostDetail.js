@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet'
 import Typography from 'material-ui/Typography'
 import { blue, grey } from 'material-ui/colors'
 import { withStyles } from 'material-ui/styles'
-import { Link } from 'react-router-dom'
+// import { Link } from "react-router-dom";
 // import '../styles/app.css'
 
 const styles = {
@@ -46,7 +46,7 @@ const PostDetail = ({ data, classes }) => {
 }
 
 const RenderPost = ({ data, classes }) => {
-  const post = data.post
+  const post = data.postBy
   const date = new Date(post.date).toLocaleDateString()
   return (
     <div>
@@ -64,9 +64,7 @@ const RenderPost = ({ data, classes }) => {
         {post.categories.edges[0].node.name.toUpperCase()}
       </Typography>
       <Typography type='headline' className={classes.titleColor} variant='h4'>
-        <Link to={`/post/${post.id}`}>
-          <h1>{post.title}</h1>
-        </Link>
+        <h1>{post.title}</h1>
       </Typography>
       <Typography type='subheading' component='h4'>
         {date}
@@ -83,6 +81,6 @@ const RenderPost = ({ data, classes }) => {
 
 export default withStyles(styles)(
   graphql(SinglePostDetail, {
-    options: ({ match }) => ({ variables: { id: match.params.post_id } })
+    options: ({ match }) => ({ variables: { slug: match.params.slug } })
   })(PostDetail)
 )
