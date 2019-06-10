@@ -115,7 +115,7 @@ class SideComponent extends Component {
         </Hidden>
         <Hidden mdDown implementation='css'>
           <Drawer
-            type='permanent'
+            variant='persistent'
             open
             classes={{
               paper: classes.drawerPaper
