@@ -4,13 +4,14 @@ import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
-import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import ViewQuiltIcon from 'material-ui-icons/ViewQuilt'
+import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import SearchIcon from 'material-ui-icons/Search'
 import PrintIcon from 'material-ui-icons/Print'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import Menu, { MenuItem } from 'material-ui/Menu'
 import classNames from 'classnames'
+
 const TopBar = ({
   classes,
   open,
@@ -20,7 +21,7 @@ const TopBar = ({
   anchorEl,
   handleRequestClose,
   handleLayoutChange,
-  viewType
+  viewtype
 }) => {
   return (
     <div>
@@ -35,12 +36,12 @@ const TopBar = ({
             <MenuIcon />
           </IconButton>
           <Typography
-            type='title'
+            type='display1'
             color='inherit'
             className={classNames(classes.flex, classes.typo)}
             noWrap
           >
-            FUS Bulletin
+            Bulletin
           </Typography>
           <IconButton color='primary' aria-label='More'>
             <SearchIcon />
@@ -50,7 +51,7 @@ const TopBar = ({
             color='primary'
             aria-label='More'
           >
-            {viewType === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
+            {viewtype === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
           </IconButton>
           <IconButton color='primary' aria-label='More'>
             <PrintIcon />

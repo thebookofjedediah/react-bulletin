@@ -11,7 +11,8 @@ class Layout extends Component {
     open: false,
     anchorEl: null,
     openMenu: false,
-    viewType: 'list'
+    viewType: 'list',
+    btnDrawerOpen: false
   }
   componentWillMount () {
     const layoutType = window.localStorage.getItem('l-type') || 'list'
@@ -43,6 +44,10 @@ class Layout extends Component {
 
   handleDrawerClose = () => {
     this.setState({ open: false })
+  }
+
+  toggleDrawer = () => {
+    this.setState({ btnDrawerOpen: !this.state.btnDrawerOpen })
   }
 
   render () {
