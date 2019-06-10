@@ -35,11 +35,11 @@ const styles = {
   }
 }
 
-const CardImage = ({ mediaStyle, imageURL, id }) => {
+const CardImage = ({ mediaStyle, imageURL, slug }) => {
   if (!imageURL) return ''
 
   return (
-    <Link to={`/post/${id}`}>
+    <Link to={`/post/${slug}`}>
       <CardMedia className={mediaStyle} image={imageURL} />
     </Link>
   )
@@ -69,12 +69,16 @@ class PostPreview extends React.Component {
     this.setState({ content: this.sanitizeContent(this.props.content) })
   }
   render () {
-    const { classes, title, imageURL, date, id, style, category } = this.props
+    const { classes, title, imageURL, date, slug, style, category } = this.props
     const postDate = new Date(date).toLocaleDateString()
     return (
       <div>
         <Card className={classes.card} style={style}>
-          <CardImage mediaStyle={classes.media} imageURL={imageURL} id={id} />
+          <CardImage
+            mediaStyle={classes.media}
+            imageURL={imageURL}
+            slug={slug}
+          />
           <CardContent>
             <Typography type='caption' className={classes.categoryColor}>
               {category.toUpperCase()}
@@ -84,7 +88,7 @@ class PostPreview extends React.Component {
               className={classes.titleColor}
               component='h2'
             >
-              <Link className={classes.link} to={`/post/${id}`}>
+              <Link className={classes.link} to={`/post/${slug}`}>
                 {title}
               </Link>
             </Typography>
@@ -98,7 +102,7 @@ class PostPreview extends React.Component {
             <Typography type='body2' gutterBottom>
               {this.state.content}
               {this.state.cRead && (
-                <Link className={classes.continue} to={`/post/${id}`}>
+                <Link className={classes.continue} to={`/post/${slug}`}>
                   {' '}
                   ...Continue Reading
                 </Link>
@@ -114,7 +118,7 @@ class PostPreview extends React.Component {
           </CardContent>
           <Divider />
           <CardActions>
-            <Button href={`/post/${id}`} dense color='primary'>
+            <Button href={`/post/${slug}`} dense color='primary'>
               Read More
             </Button>
           </CardActions>

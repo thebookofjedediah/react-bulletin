@@ -8,12 +8,19 @@ const styles = theme => ({
   flex: {
     flex: 1
   },
+  closeButton: {
+    top: '5px',
+    left: '30px',
+    position: 'relative',
+    zIndex: 1
+  },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    color: 'inherit'
   },
   root: {
     width: '100%',
-    height: 430,
+    height: '100%',
     zIndex: 1
   },
   appFrame: {
@@ -61,6 +68,9 @@ const styles = theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar
   },
+  drawerItem: {
+    fontSize: '16px'
+  },
   content: {
     width: '100%',
     padding: theme.spacing.unit * 3,
@@ -81,6 +91,15 @@ const styles = theme => ({
   },
   btn: {
     cursor: 'pointer'
+  },
+  absolute: {
+    flip: false,
+    position: 'fixed',
+    bottom: 40,
+    right: 40
+  },
+  formControl: {
+    width: '100%'
   }
 })
 
