@@ -5,7 +5,7 @@ import PostPreview from '../PostPreview'
 const ListView = ({ posts }) => (
   <Grid container justify='center'>
     <Grid item xs={12}>
-      <h1>Today{"'"}s Bulletin</h1>
+      <h1>This Week{"'"}s Bulletin</h1>
       {posts &&
         posts.edges.map(post => (
           <PostPreview
