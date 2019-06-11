@@ -5,6 +5,8 @@ import theme from './fusTheme'
 import TopBar from './appbar'
 import SideBar from './drawer'
 import styles from './styles'
+import IconButton from 'material-ui/IconButton'
+import CloseIcon from 'material-ui-icons/Close'
 
 class Layout extends Component {
   state = {
@@ -38,6 +40,12 @@ class Layout extends Component {
     })
   }
 
+  handlePrintIcon = () => {
+    this.setState({
+      viewType: 'print'
+    })
+  }
+
   handleRequestClose = () => {
     this.setState({ openMenu: false })
   }
@@ -65,14 +73,31 @@ class Layout extends Component {
             handleClick={this.handleClick}
             handleRequestClose={this.handleRequestClose}
             handleLayoutChange={this.handleLayoutChange}
+            handlePrintIcon={this.handlePrintIcon}
+            style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
           <SideBar
             open={this.state.open}
             classes={this.props.classes}
             handleDrawerClose={this.handleDrawerClose}
+            style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
+          <IconButton
+            className='no-print'
+            style={
+              this.state.viewType === 'print'
+                ? { top: '5px', left: '30px', position: 'relative', zIndex: 1 }
+                : { display: 'none' }
+            }
+            onClick={this.handleLayoutChange}
+          >
+            <CloseIcon />
+          </IconButton>
           <div className={classes.appFrame}>
-            <main className={classNames(classes.content, this.state.open)}>
+            <main
+              style={this.state.viewType === 'print' ? { margin: '15px' } : {}}
+              className={classNames(classes.content, this.state.open)}
+            >
               {// eslint-disable-next-line
               this.props.children.map((child, i) => {
                   if (child) {

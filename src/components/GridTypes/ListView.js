@@ -7,6 +7,7 @@ const ListView = ({ posts }) => (
     <Grid item xs={12} sm={8} md={6}>
       {posts.edges.map(post => (
         <PostPreview
+          view='card'
           key={post.node.slug}
           slug={post.node.slug}
           date={post.node.date}

@@ -3,10 +3,12 @@ import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
+import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
 import Attachments from './Attachments'
 import { Link } from 'react-router-dom'
+import AttachmentIcon from 'material-ui-icons/Attachment'
 
 const styles = {
   card: {
@@ -22,7 +24,8 @@ const styles = {
     color: '#ffb41f'
   },
   media: {
-    height: 250
+    height: 'auto',
+    width: '100%'
   },
   link: {
     color: 'inherit',
@@ -32,6 +35,10 @@ const styles = {
     textDecoration: 'none',
     color: blue[800],
     fontSize: '16px'
+  },
+  printVAtt: {
+    width: 'auto',
+    fontSize: '18px'
   }
 }
 
@@ -40,7 +47,7 @@ const CardImage = ({ mediaStyle, imageURL, slug }) => {
 
   return (
     <Link to={`/post/${slug}`}>
-      <CardMedia className={mediaStyle} image={imageURL} />
+      <CardMedia className={mediaStyle} component='img' image={imageURL} />
     </Link>
   )
 }
@@ -66,66 +73,121 @@ class PostPreview extends React.Component {
     return newContent
   }
   componentWillMount () {
-    this.setState({ content: this.sanitizeContent(this.props.content) })
+    this.setState({ sanitized: this.sanitizeContent(this.props.content) })
   }
   render () {
-    const { classes, title, imageURL, date, slug, style, category } = this.props
+    const {
+      classes,
+      title,
+      imageURL,
+      date,
+      slug,
+      style,
+      category,
+      view
+    } = this.props
     const postDate = new Date(date).toLocaleDateString()
     return (
       <div>
-        <Card className={classes.card} style={style}>
-          <CardImage
-            mediaStyle={classes.media}
+        {view === 'card' ? (
+          <CardView
+            classes={classes}
+            title={title}
             imageURL={imageURL}
+            postDate={postDate}
             slug={slug}
+            style={style}
+            category={category}
+            cRead={this.state.cRead}
+            content={this.state.sanitized}
           />
-          <CardContent>
-            <Typography type='caption' className={classes.categoryColor}>
-              {category.toUpperCase()}
-            </Typography>
-            <Typography
-              type='headline'
-              className={classes.titleColor}
-              component='h2'
-            >
-              <Link className={classes.link} to={`/post/${slug}`}>
-                {title}
-              </Link>
-            </Typography>
-            <Typography
-              className={classes.dateColor}
-              type='subheading'
-              component='h3'
-            >
-              {postDate}
-            </Typography>
-            <Typography type='body2' gutterBottom>
-              {this.state.content}
-              {this.state.cRead && (
-                <Link className={classes.continue} to={`/post/${slug}`}>
-                  {' '}
-                  ...Continue Reading
-                </Link>
-              )}
-            </Typography>
-            {/*
-        TODO:
-         - Add logic to test if there are attachments
-        */}
-            <Attachments
-            // pass the attachments as props here
-            />
-          </CardContent>
-          <Divider />
-          <CardActions>
-            <Button href={`/post/${slug}`} dense color='primary'>
-              Read More
-            </Button>
-          </CardActions>
-        </Card>
+        ) : (
+          <PlainView
+            classes={classes}
+            title={title}
+            content={this.props.content}
+          />
+        )}
       </div>
     )
   }
 }
+
+const CardView = ({
+  classes,
+  title,
+  slug,
+  imageURL,
+  postDate,
+  id,
+  style,
+  category,
+  content,
+  cRead
+}) => (
+  <div>
+    <Card className={classes.card} style={style}>
+      <CardImage mediaStyle={classes.media} imageURL={imageURL} slug={slug} />
+      <CardContent>
+        <Typography type='caption' className={classes.categoryColor}>
+          {category.toUpperCase()}
+        </Typography>
+        <Typography
+          type='headline'
+          className={classes.titleColor}
+          component='h2'
+        >
+          <Link className={classes.link} to={`/post/${slug}`}>
+            {title}
+          </Link>
+        </Typography>
+        <Typography
+          className={classes.dateColor}
+          type='subheading'
+          component='h3'
+        >
+          {postDate}
+        </Typography>
+        <Typography type='body2' gutterBottom>
+          {content}
+          {cRead && (
+            <Link className={classes.continue} to={`/post/${slug}`}>
+              {' '}
+              ...Continue Reading
+            </Link>
+          )}
+        </Typography>
+        {/*
+      TODO:
+       - Add logic to test if there are attachments
+      */}
+        <Attachments
+        // pass the attachments as props here
+        />
+      </CardContent>
+      <Divider />
+      <CardActions>
+        <Button href={`/post/${slug}`} dense color='primary'>
+          Read More
+        </Button>
+      </CardActions>
+    </Card>
+  </div>
+)
+
+const PlainView = ({ classes, title, id, content }) => (
+  <div style={{ fontFamily: 'serif !important' }}>
+    <h1>
+      <u>{title}</u>
+    </h1>
+    <div dangerouslySetInnerHTML={{ __html: content }} />
+    {/* Attachments login */}
+    <h4>Attachments</h4>
+    <hr />
+    <IconButton className={classes.printVAtt}>
+      <AttachmentIcon /> AttachmentIcon
+    </IconButton>
+  </div>
+)
 
 export default withStyles(styles)(PostPreview)

@@ -21,10 +21,12 @@ const TopBar = ({
   anchorEl,
   handleRequestClose,
   handleLayoutChange,
-  viewtype
+  handlePrintIcon,
+  viewtype,
+  style
 }) => {
   return (
-    <div>
+    <div style={style}>
       <AppBar className={classNames(classes.appBar, open)}>
         <Toolbar disableGutters={!open}>
           <IconButton
@@ -53,7 +55,11 @@ const TopBar = ({
           >
             {viewtype === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
           </IconButton>
-          <IconButton color='primary' aria-label='More'>
+          <IconButton
+            onClick={handlePrintIcon}
+            color='primary'
+            aria-label='More'
+          >
             <PrintIcon />
           </IconButton>
           <IconButton
