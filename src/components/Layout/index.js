@@ -7,19 +7,47 @@ import SideBar from './drawer'
 import styles from './styles'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui-icons/Close'
+import debounce from 'lodash.debounce'
+import { withApollo } from 'react-apollo'
+import { PostSearchQuery } from '../../graphql/queries/posts'
+import { withRouter } from 'react-router-dom'
 
 class Layout extends Component {
+  constructor (props) {
+    super(props)
+    this.deBounced = debounce(this.handleSearchSubmit, 450)
+  }
   state = {
     open: false,
     anchorEl: null,
     openMenu: false,
     viewType: 'list',
-    btnDrawerOpen: false
+    btnDrawerOpen: false,
+    searchStyles: { display: 'none' },
+    searchIconStyles: { display: 'block' },
+    searchPosts: undefined,
+    searchText: ''
   }
   componentWillMount () {
     const layoutType = window.localStorage.getItem('l-type') || 'list'
     this.setState({
       viewType: layoutType
+    })
+  }
+
+  handleSearchSubmit = () => {
+    if (this.state.searchText === '') this.setState({ searchText: ' ' })
+    this.props.client
+      .query({
+        query: PostSearchQuery,
+        variables: { search: this.state.searchText }
+      })
+      .then(res => this.setState({ searchPosts: res.data.posts }))
+  }
+  handleSearchToggle = () => {
+    this.setState({
+      searchIconStyles: this.state.searchStyles,
+      searchStyles: this.state.searchIconStyles
     })
   }
   handleDrawerOpen = () => {
@@ -64,6 +92,10 @@ class Layout extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <TopBar
+            handleAnyInputChange={this.handleAnyInputChange}
+            searchStyles={this.state.searchStyles}
+            searchIconStyles={this.state.searchIconStyles}
+            handleSearchToggle={this.handleSearchToggle}
             viewType={this.state.viewType}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
@@ -103,6 +135,7 @@ class Layout extends Component {
                   if (child) {
                     return React.cloneElement(child, {
                       viewtype: this.state.viewType,
+                      searchposts: this.state.searchPosts,
                       key: i
                     })
                   }
@@ -113,6 +146,12 @@ class Layout extends Component {
       </MuiThemeProvider>
     )
   }
+  handleAnyInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    this.deBounced()
+  }
 }
 
-export default withStyles(styles)(Layout)
+export default withApollo(withStyles(styles)(withRouter(Layout)))

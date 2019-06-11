@@ -7,17 +7,26 @@ import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
 import Error from '../components/Error'
 
-const Home = ({ data, viewtype }) => {
-  const posts = data.posts
+const Home = ({ data, viewtype, searchposts }) => {
   return (
     <Layout>
+      <RenderHome data={data} viewtype={viewtype} searchposts={searchposts} />
+      <span />
+    </Layout>
+  )
+}
+
+const RenderHome = ({ data, viewtype, searchposts }) => {
+  const posts = searchposts || data.posts
+  return (
+    <div>
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
       {!data.error && !posts && <Loader />}
       {data.error && <Error error={data.error.message} />}
-      {posts && <GridRenderer posts={posts} />}
-    </Layout>
+      {posts && <GridRenderer posts={posts} viewtype={viewtype} />}
+    </div>
   )
 }
 
