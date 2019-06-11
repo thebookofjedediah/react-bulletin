@@ -1,6 +1,5 @@
 import React from 'react'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
-import Button from 'material-ui/Button'
+import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import IconButton from 'material-ui/IconButton'
@@ -157,6 +156,7 @@ const CardView = ({
             </Link>
           )}
         </Typography>
+        <Divider />
         {/*
       TODO:
        - Add logic to test if there are attachments
@@ -165,12 +165,6 @@ const CardView = ({
         // pass the attachments as props here
         />
       </CardContent>
-      <Divider />
-      <CardActions>
-        <Button href={`/post/${slug}`} dense color='primary'>
-          Read More
-        </Button>
-      </CardActions>
     </Card>
   </div>
 )

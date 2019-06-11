@@ -10,12 +10,18 @@ import SearchIcon from 'material-ui-icons/Search'
 import PrintIcon from 'material-ui-icons/Print'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import Menu, { MenuItem } from 'material-ui/Menu'
+import TextField from 'material-ui/TextField'
 import classNames from 'classnames'
 
 const TopBar = ({
   classes,
   open,
   openMenu,
+  searchStyles,
+  searchIconStyles,
+  handleAnyInputChange,
+  handleSearchToggle,
+  openSearch,
   handleDrawerOpen,
   handleClick,
   anchorEl,
@@ -45,7 +51,17 @@ const TopBar = ({
           >
             Bulletin
           </Typography>
-          <IconButton color='primary' aria-label='More'>
+          <TextField
+            onChange={handleAnyInputChange}
+            style={searchStyles}
+            name='searchText'
+          />
+
+          <IconButton
+            onClick={handleSearchToggle}
+            color='primary'
+            aria-label='More'
+          >
             <SearchIcon />
           </IconButton>
           <IconButton
