@@ -13,9 +13,11 @@ const Attachments = ({ attachments }) => {
         <Button dense color='primary'>
           <AttachmentIcon /> Attachment1
           {/* attachments.map((attachment, i) => (
-            <div key={i}>
-              <AttachmentIcon /> {attachment}
-            </div>
+            <Typography gutterBottom key={i}>
+              <Button dense color="primary">
+                <AttachmentIcon /> {attachment}
+              </Button>
+            </Typography>
           )) */}
         </Button>
       </Typography>

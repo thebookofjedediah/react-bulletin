@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0 !important;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+header {
+  padding-right: 0 !important;
+}
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
+
+.drawer-item p,
+.drawer-item {
+  font-size: 16px !important;
+}
