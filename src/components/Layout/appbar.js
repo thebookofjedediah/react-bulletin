@@ -8,15 +8,12 @@ import ViewQuiltIcon from 'material-ui-icons/ViewQuilt'
 import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import SearchIcon from 'material-ui-icons/Search'
 import PrintIcon from 'material-ui-icons/Print'
-import MoreVertIcon from 'material-ui-icons/MoreVert'
-import Menu, { MenuItem } from 'material-ui/Menu'
 import TextField from 'material-ui/TextField'
 import classNames from 'classnames'
 
 const TopBar = ({
   classes,
   open,
-  openMenu,
   searchStyles,
   searchIconStyles,
   handleAnyInputChange,
@@ -49,14 +46,13 @@ const TopBar = ({
             className={classNames(classes.flex, classes.typo)}
             noWrap
           >
-            Bulletin
+            Student Bulletin
           </Typography>
           <TextField
             onChange={handleAnyInputChange}
             style={searchStyles}
             name='searchText'
           />
-
           <IconButton
             onClick={handleSearchToggle}
             color='primary'
@@ -78,23 +74,6 @@ const TopBar = ({
           >
             <PrintIcon />
           </IconButton>
-          <IconButton
-            color='primary'
-            aria-label='More'
-            aria-owns={openMenu ? 'simple-menu' : null}
-            aria-haspopup='true'
-            onClick={handleClick}
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            id='simple-menu'
-            anchorEl={anchorEl}
-            open={openMenu}
-            onRequestClose={handleRequestClose}
-          >
-            <MenuItem onClick={handleRequestClose}>Logout</MenuItem>
-          </Menu>
         </Toolbar>
       </AppBar>
     </div>
