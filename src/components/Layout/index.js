@@ -3,7 +3,7 @@ import { withStyles, MuiThemeProvider } from 'material-ui/styles'
 import classNames from 'classnames'
 import theme from './fusTheme'
 import TopBar from './appbar'
-import SideBar from './drawer'
+import Drawer from './drawer'
 import styles from './styles'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui-icons/Close'
@@ -26,7 +26,8 @@ class Layout extends Component {
     searchStyles: { display: 'none' },
     searchIconStyles: { display: 'block' },
     searchPosts: undefined,
-    searchText: ''
+    searchText: '',
+    showSearch: false
   }
   componentWillMount () {
     const layoutType = window.localStorage.getItem('l-type') || 'list'
@@ -45,10 +46,7 @@ class Layout extends Component {
       .then(res => this.setState({ searchPosts: res.data.posts }))
   }
   handleSearchToggle = () => {
-    this.setState({
-      searchIconStyles: this.state.searchStyles,
-      searchStyles: this.state.searchIconStyles
-    })
+    this.setState(state => ({ showSearch: !this.state.showSearch }))
   }
   handleDrawerOpen = () => {
     this.setState({ open: true })
@@ -103,6 +101,7 @@ class Layout extends Component {
             searchStyles={this.state.searchStyles}
             searchIconStyles={this.state.searchIconStyles}
             handleSearchToggle={this.handleSearchToggle}
+            showSearch={this.state.showSearch}
             viewType={this.state.viewType}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
@@ -115,10 +114,11 @@ class Layout extends Component {
             handlePrintIcon={this.handlePrintIcon}
             style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
-          <SideBar
+          <Drawer
             open={this.state.open}
             classes={this.props.classes}
             handleDrawerClose={this.handleDrawerClose}
+            toggleDrawer={this.toggleDrawer}
             style={this.state.viewType === 'print' ? { display: 'none' } : {}}
           />
           <IconButton
