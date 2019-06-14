@@ -1,6 +1,7 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
+import CloseIcon from 'material-ui-icons/Close'
 import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
@@ -25,7 +26,8 @@ const TopBar = ({
   handleRequestClose,
   handleLayoutChange,
   handlePrintIcon,
-  viewtype,
+  viewType,
+  showSearch,
   style
 }) => {
   return (
@@ -48,24 +50,40 @@ const TopBar = ({
           >
             Student Bulletin
           </Typography>
-          <TextField
-            onChange={handleAnyInputChange}
-            style={searchStyles}
-            name='searchText'
-          />
-          <IconButton
-            onClick={handleSearchToggle}
-            color='primary'
-            aria-label='More'
-          >
-            <SearchIcon />
-          </IconButton>
+
+          {showSearch ? (
+            <div>
+              <TextField
+                onChange={handleAnyInputChange}
+                name='searchText'
+                placeholder='Search'
+                autoFocus
+              />
+
+              <IconButton
+                onClick={handleSearchToggle}
+                color='primary'
+                aria-label='Close Search'
+              >
+                <CloseIcon />
+              </IconButton>
+            </div>
+          ) : (
+            <IconButton
+              onClick={handleSearchToggle}
+              color='primary'
+              aria-label='Search'
+            >
+              <SearchIcon />
+            </IconButton>
+          )}
+
           <IconButton
             onClick={handleLayoutChange}
             color='primary'
             aria-label='More'
           >
-            {viewtype === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
+            {viewType === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
           </IconButton>
           <IconButton
             onClick={handlePrintIcon}

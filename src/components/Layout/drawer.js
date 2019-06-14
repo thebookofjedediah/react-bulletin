@@ -90,9 +90,6 @@ class SideComponent extends Component {
           <ListItemText secondary={'Submit Announcement'} />
         </ListItem>
         <ListItem button>
-          <ListItemText secondary={'Classic Mode'} />
-        </ListItem>
-        <ListItem button>
           <ListItemText secondary={'Help'} />
         </ListItem>
       </div>
