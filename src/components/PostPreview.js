@@ -128,14 +128,14 @@ const CardView = ({
     <Card className={classes.card} style={style}>
       <CardImage mediaStyle={classes.media} imageURL={imageURL} slug={slug} />
       <CardContent>
-        <Typography type='caption' className={classes.categoryColor}>
+        <Typography
+          type='caption'
+          variant='h6'
+          className={classes.categoryColor}
+        >
           {category.toUpperCase()}
         </Typography>
-        <Typography
-          type='headline'
-          className={classes.titleColor}
-          component='h2'
-        >
+        <Typography type='headline' className={classes.titleColor} variant='h5'>
           <Link className={classes.link} to={`/post/${slug}`}>
             {title}
           </Link>
@@ -143,7 +143,7 @@ const CardView = ({
         <Typography
           className={classes.dateColor}
           type='subheading'
-          component='h3'
+          variant='subtitle1'
         >
           {postDate}
         </Typography>

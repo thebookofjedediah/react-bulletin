@@ -21,7 +21,7 @@ class Layout extends Component {
     open: false,
     anchorEl: null,
     openMenu: false,
-    viewType: 'list',
+    viewtype: 'list',
     btnDrawerOpen: false,
     searchStyles: { display: 'none' },
     searchIconStyles: { display: 'block' },
@@ -32,7 +32,7 @@ class Layout extends Component {
   componentWillMount () {
     const layoutType = window.localStorage.getItem('l-type') || 'list'
     this.setState({
-      viewType: layoutType
+      viewtype: layoutType
     })
   }
 
@@ -59,16 +59,16 @@ class Layout extends Component {
   }
 
   handleLayoutChange = () => {
-    const newVal = this.state.viewType === 'grid' ? 'list' : 'grid'
+    const newVal = this.state.viewtype === 'grid' ? 'list' : 'grid'
     window.localStorage.setItem('l-type', newVal)
     this.setState({
-      viewType: newVal
+      viewtype: newVal
     })
   }
 
   handlePrintIcon = () => {
     this.setState({
-      viewType: 'print'
+      viewtype: 'print'
     })
   }
 
@@ -83,7 +83,7 @@ class Layout extends Component {
   handleClosePV = () => {
     const view = window.localStorage.getItem('l-type')
     this.setState({
-      viewType: view
+      viewtype: view
     })
   }
 
@@ -102,7 +102,7 @@ class Layout extends Component {
             searchIconStyles={this.state.searchIconStyles}
             handleSearchToggle={this.handleSearchToggle}
             showSearch={this.state.showSearch}
-            viewType={this.state.viewType}
+            viewtype={this.state.viewtype}
             open={this.state.open}
             anchorEl={this.state.anchorEl}
             classes={this.props.classes}
@@ -112,19 +112,19 @@ class Layout extends Component {
             handleRequestClose={this.handleRequestClose}
             handleLayoutChange={this.handleLayoutChange}
             handlePrintIcon={this.handlePrintIcon}
-            style={this.state.viewType === 'print' ? { display: 'none' } : {}}
+            style={this.state.viewtype === 'print' ? { display: 'none' } : {}}
           />
           <Drawer
             open={this.state.open}
             classes={this.props.classes}
             handleDrawerClose={this.handleDrawerClose}
             toggleDrawer={this.toggleDrawer}
-            style={this.state.viewType === 'print' ? { display: 'none' } : {}}
+            style={this.state.viewtype === 'print' ? { display: 'none' } : {}}
           />
           <IconButton
             className='no-print'
             style={
-              this.state.viewType === 'print'
+              this.state.viewtype === 'print'
                 ? { top: '5px', left: '90%', position: 'absolute', zIndex: 1 }
                 : { display: 'none' }
             }
@@ -134,14 +134,14 @@ class Layout extends Component {
           </IconButton>
           <div className={classes.appFrame}>
             <main
-              style={this.state.viewType === 'print' ? { margin: '15px' } : {}}
+              style={this.state.viewtype === 'print' ? { margin: '15px' } : {}}
               className={classNames(classes.content, this.state.open)}
             >
               {// eslint-disable-next-line
               this.props.children.map((child, i) => {
                   if (child) {
                     return React.cloneElement(child, {
-                      viewtype: this.state.viewType,
+                      viewtype: this.state.viewtype,
                       searchposts: this.state.searchPosts,
                       key: i
                     })
