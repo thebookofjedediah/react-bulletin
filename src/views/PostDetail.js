@@ -4,7 +4,7 @@ import { SinglePostDetail } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 import { Helmet } from 'react-helmet'
-import Typography from 'material-ui/Typography'
+import Typography from '@material-ui/core/Typography'
 import { blue, grey } from 'material-ui/colors'
 import { withStyles } from 'material-ui/styles'
 // import { Link } from "react-router-dom";
@@ -60,13 +60,13 @@ const RenderPost = ({ data, classes }) => {
           src={post.featuredImage.sourceUrl}
         />
       )}
-      <Typography type='caption' className={classes.categoryColor}>
+      <Typography type='caption' variant='h6' className={classes.categoryColor}>
         {post.categories.edges[0].node.name.toUpperCase()}
       </Typography>
       <Typography type='headline' className={classes.titleColor} variant='h4'>
-        <h1>{post.title}</h1>
+        {post.title}
       </Typography>
-      <Typography type='subheading' component='h4'>
+      <Typography type='subheading' variant='subtitle1'>
         {date}
       </Typography>
 

@@ -10,6 +10,7 @@ import ViewStreamIcon from 'material-ui-icons/ViewStream'
 import SearchIcon from 'material-ui-icons/Search'
 import PrintIcon from 'material-ui-icons/Print'
 import TextField from 'material-ui/TextField'
+import Tooltip from 'material-ui/Tooltip'
 import classNames from 'classnames'
 
 const TopBar = ({
@@ -26,7 +27,7 @@ const TopBar = ({
   handleRequestClose,
   handleLayoutChange,
   handlePrintIcon,
-  viewType,
+  viewtype,
   showSearch,
   style
 }) => {
@@ -69,29 +70,39 @@ const TopBar = ({
               </IconButton>
             </div>
           ) : (
-            <IconButton
-              onClick={handleSearchToggle}
-              color='primary'
-              aria-label='Search'
-            >
-              <SearchIcon />
-            </IconButton>
+            <Tooltip title='Search' placement='left'>
+              <IconButton
+                onClick={handleSearchToggle}
+                color='primary'
+                aria-label='Search'
+              >
+                <SearchIcon />
+              </IconButton>
+            </Tooltip>
           )}
 
-          <IconButton
-            onClick={handleLayoutChange}
-            color='primary'
-            aria-label='More'
+          <Tooltip
+            title={viewtype === 'grid' ? 'List View' : 'Grid View'}
+            placement='left'
           >
-            {viewType === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
-          </IconButton>
-          <IconButton
-            onClick={handlePrintIcon}
-            color='primary'
-            aria-label='More'
-          >
-            <PrintIcon />
-          </IconButton>
+            <IconButton
+              onClick={handleLayoutChange}
+              color='primary'
+              aria-label='View Type'
+            >
+              {viewtype === 'grid' ? <ViewStreamIcon /> : <ViewQuiltIcon />}
+            </IconButton>
+          </Tooltip>
+
+          <Tooltip title='Print View' placement='left'>
+            <IconButton
+              onClick={handlePrintIcon}
+              color='primary'
+              aria-label='More'
+            >
+              <PrintIcon />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
     </div>
