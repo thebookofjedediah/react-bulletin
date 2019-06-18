@@ -5,6 +5,7 @@ import theme from './fusTheme'
 import TopBar from './appbar'
 import Drawer from './drawer'
 import styles from './styles'
+import AnnouncementForm from './AnnouncementForm'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui-icons/Close'
 import debounce from 'lodash.debounce'
@@ -120,6 +121,10 @@ class Layout extends Component {
             handleDrawerClose={this.handleDrawerClose}
             toggleDrawer={this.toggleDrawer}
             style={this.state.viewtype === 'print' ? { display: 'none' } : {}}
+          />
+          <AnnouncementForm
+            btnDrawerOpen={this.state.btnDrawerOpen}
+            toggleDrawer={this.toggleDrawer}
           />
           <IconButton
             className='no-print'
