@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Category, { allPosts } from './views/Category'
 import Home from './views/Home'
 import PostDetail from './views/PostDetail'
+import Help from './views/Help'
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
         <Route exact path='/category/' component={allPosts} />
         <Route exact path='/category/:slug' component={Category} />
         <Route path='/post/:slug' component={PostDetail} />
+        <Route exact path='/help' component={Help} />
       </Switch>
     </BrowserRouter>
   )

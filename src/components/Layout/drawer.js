@@ -83,15 +83,21 @@ class SideComponent extends Component {
           <ListItemIcon>
             <ClockIcon />
           </ListItemIcon>
-          <ListItemText inset primary='Filter By Date' />
+          <ListItemText inset secondary='Filter By Date' />
         </ListItem>
         <Divider />
-        <ListItem button onClick={this.props.toggleDrawer}>
+        <ListItem
+          button
+          className={classes.btn}
+          onClick={this.props.toggleDrawer}
+        >
           <ListItemText secondary={'Submit Announcement'} />
         </ListItem>
-        <ListItem button>
-          <ListItemText secondary={'Help'} />
-        </ListItem>
+        <Link to='/help' className={classes.link}>
+          <ListItem button>
+            <ListItemText secondary={'Help'} />
+          </ListItem>
+        </Link>
       </div>
     )
     return (
