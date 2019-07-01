@@ -13,6 +13,7 @@
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
     "graphql-tools": "^4.0.4",
+    "he": "^1.2.0",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^1.0.0-beta.47",
     "material-ui-icons": "^1.0.0-beta.36",
@@ -24,7 +25,9 @@
     "react-helmet": "^5.2.1",
     "react-masonry-component": "^6.2.1",
     "react-router-dom": "^5.0.0",
+    "react-sanitized-html": "^2.0.0",
     "react-scripts": "^3.0.1",
+    "sanitize-html": "^1.20.1",
     "typeface-roboto": "^0.0.54"
   },
   "scripts": {
