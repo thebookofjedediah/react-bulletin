@@ -1,13 +1,12 @@
 import React from 'react'
 import Card, { CardContent, CardMedia } from 'material-ui/Card'
-import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
-import Attachments from './Attachments'
 import { Link } from 'react-router-dom'
 import AttachmentIcon from 'material-ui-icons/Attachment'
+import SanitizedHTML from 'react-sanitized-html'
 
 const styles = {
   card: {
@@ -137,7 +136,7 @@ const CardView = ({
         </Typography>
         <Typography type='headline' className={classes.titleColor} variant='h5'>
           <Link className={classes.link} to={`/post/${slug}`}>
-            {title}
+            <SanitizedHTML html={title} />
           </Link>
         </Typography>
         <Typography
@@ -148,7 +147,7 @@ const CardView = ({
           {postDate}
         </Typography>
         <Typography type='body2' gutterBottom>
-          {content}
+          <SanitizedHTML html={content} />
           {cRead && (
             <Link className={classes.continue} to={`/post/${slug}`}>
               {' '}
@@ -156,14 +155,6 @@ const CardView = ({
             </Link>
           )}
         </Typography>
-        <Divider />
-        {/*
-      TODO:
-       - Add logic to test if there are attachments
-      */}
-        <Attachments
-        // pass the attachments as props here
-        />
       </CardContent>
     </Card>
   </div>
