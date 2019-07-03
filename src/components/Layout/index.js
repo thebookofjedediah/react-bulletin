@@ -10,7 +10,7 @@ import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui-icons/Close'
 import debounce from 'lodash.debounce'
 import { withApollo } from 'react-apollo'
-import { PostSearchQuery } from '../../graphql/queries/posts'
+import { PostSearchQuery, FilterDateQuery } from '../../graphql/queries/posts'
 import { withRouter } from 'react-router-dom'
 
 class Layout extends Component {
@@ -57,6 +57,17 @@ class Layout extends Component {
       openMenu: true,
       anchorEl: event ? event.currentTarget : null
     })
+  }
+
+  handleFilterDate = (month, year) => {
+    month = !month ? null : month
+    year = !year ? null : year
+    this.props.client
+      .query({
+        query: FilterDateQuery,
+        variables: { month, year }
+      })
+      .then(res => this.setState({ searchPosts: res.data.posts }))
   }
 
   handleLayoutChange = () => {
@@ -116,6 +127,7 @@ class Layout extends Component {
             style={this.state.viewtype === 'print' ? { display: 'none' } : {}}
           />
           <Drawer
+            handleFilterDate={this.handleFilterDate}
             open={this.state.open}
             classes={this.props.classes}
             handleDrawerClose={this.handleDrawerClose}

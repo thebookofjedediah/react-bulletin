@@ -13,6 +13,5 @@ If you are interested in contributing to the project then checkout this repo. Yo
 > npm start-front or yarn start-front
 ```
 
-_Please note that in order to get posts to render, you will have to go to the src/graphql/ApolloClient.js and change the WP link to the one that is commented out._
 
 Thanks for looking!
