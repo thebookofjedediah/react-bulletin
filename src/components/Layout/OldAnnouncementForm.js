@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import Drawer from 'material-ui/Drawer'
+import Typography from 'material-ui/Typography'
+import TextField from 'material-ui/TextField'
 import { withStyles } from 'material-ui/styles'
 import { blue, yellow } from 'material-ui/colors'
+import Button from 'material-ui/Button'
+import Input from 'material-ui/Input'
 import CloseIcon from 'material-ui-icons/Close'
 import IconButton from 'material-ui/IconButton'
-import JotformEmbed from 'react-jotform-embed'
 
 const styles = theme => ({
   textfield: {
@@ -47,8 +50,74 @@ class AnnouncementForm extends Component {
           <IconButton className={classes.closeButton}>
             <CloseIcon onClick={this.props.toggleDrawer} />
           </IconButton>
-
-          <JotformEmbed src='https://form.jotform.com/91895433142157' />
+          <Typography
+            className={classes.marginTop}
+            type='display1'
+            align='center'
+          >
+            Submit your Announcement
+          </Typography>
+          <Typography type='subheading' align='center'>
+            New announcements will be made on Monday. The deadline for next
+            upload is 2:00pm Friday.
+          </Typography>
+          <Typography
+            className={classes.bluetext}
+            type='caption'
+            align='center'
+          >
+            Do you need to request a special bulletin?
+          </Typography>
+          <form onSubmit={this.handleSubmit} encType='multipart/form-data'>
+            <TextField
+              label='Title'
+              placeholder='Write Title for your announcement here...'
+              name='title'
+              margin='normal'
+              className={classes.textfield}
+              onChange={this.handleChange}
+            />
+            <TextField
+              label='Announcement'
+              placeholder='Write you announcement here...'
+              multiline
+              name='announcement'
+              margin='normal'
+              className={classes.textfield}
+              onChange={this.handleChange}
+            />
+            <label htmlFor='file'>
+              <Button raised component='span' className={classes.button}>
+                Upload
+              </Button>
+            </label>
+            <input
+              onChange={this.handleFileChange}
+              className={classes.hide}
+              accept='jpg,jpeg,JPG,JPEG'
+              multiple
+              id='file'
+              name='filesArray'
+              type='file'
+              ref={input => {
+                this.fileInp = input
+              }}
+            />
+            <Input
+              className={classes.textfield}
+              disabled
+              placeholder='Select one file or more'
+              value={this.state.files}
+            />
+            <center>
+              <Button type='submit' raised className={classes.button}>
+                {this.state.btnText}
+              </Button>
+            </center>
+            <br />
+            <br />
+            <br />
+          </form>
         </div>
       </Drawer>
     )
