@@ -9,7 +9,6 @@ const GridRenderer = ({ viewtype, posts }) => {
     <div>
       {viewtype === 'print' && <PrintView posts={posts} />}
       {grid && <GridView posts={posts} />}
-      {!grid && <ListView posts={posts} />}
       {!grid && viewtype !== 'print' && <ListView posts={posts} />}
     </div>
   )

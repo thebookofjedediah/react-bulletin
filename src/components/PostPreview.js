@@ -1,11 +1,9 @@
 import React from 'react'
 import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Typography from '@material-ui/core/Typography'
-import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 import { blue, grey } from 'material-ui/colors'
 import { Link } from 'react-router-dom'
-import AttachmentIcon from 'material-ui-icons/Attachment'
 import SanitizedHTML from 'react-sanitized-html'
 
 const styles = {
@@ -166,12 +164,7 @@ const PlainView = ({ classes, title, id, content }) => (
       <u>{title}</u>
     </h1>
     <div dangerouslySetInnerHTML={{ __html: content }} />
-    {/* Attachments login */}
-    <h4>Attachments</h4>
     <hr />
-    <IconButton className={classes.printVAtt}>
-      <AttachmentIcon /> AttachmentIcon
-    </IconButton>
   </div>
 )
 
