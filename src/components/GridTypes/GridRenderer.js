@@ -4,17 +4,11 @@ import ListView from './ListView'
 import PrintView from './PrintView'
 import Query from 'react-apollo/Query'
 
-const GridRenderer = ({ viewtype, posts, query, where }) => {
+const GridRenderer = ({ viewtype, query, variables }) => {
   const grid = viewtype === 'grid'
 
   return (
-    <Query
-      notifyOnNetworkStatusChange
-      query={query}
-      variables={{
-        slug: where
-      }}
-    >
+    <Query notifyOnNetworkStatusChange query={query} variables={variables}>
       {({ data, loading, error, fetchMore }) => {
         if (error) return <p>{error.message}</p>
         const posts = data.posts

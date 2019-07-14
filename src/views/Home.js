@@ -1,11 +1,8 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
 import { getAllPosts } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
-import Loader from '../components/Loader'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
-import Error from '../components/Error'
 
 const Home = ({ data, viewtype, searchposts }) => {
   return (
@@ -16,26 +13,21 @@ const Home = ({ data, viewtype, searchposts }) => {
   )
 }
 
-const RenderHome = ({ data, viewtype, searchposts }) => {
-  const posts = searchposts || data.posts
+const RenderHome = ({ data, viewtype }) => {
   return (
     <>
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
-      {!data.error && !posts && <Loader />}
-      {data.error && <Error error={data.error.message} />}
-      {posts && (
-        <GridRenderer posts={posts} viewtype={viewtype} query={getAllPosts} />
-      )}
+      <GridRenderer
+        viewtype={viewtype}
+        variables={{
+          first: 5
+        }}
+        query={getAllPosts}
+      />
     </>
   )
 }
 
-export default graphql(getAllPosts, {
-  options: {
-    variables: {
-      first: 5
-    }
-  }
-})(Home)
+export default Home
