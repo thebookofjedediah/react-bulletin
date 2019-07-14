@@ -186,7 +186,7 @@ class SideComponent extends Component {
     )
     return (
       <div style={this.props.style}>
-        <Hidden mdUp>
+        <Hidden mdUp implementation='css'>
           <Drawer
             variant='temporary'
             open={this.props.open}
@@ -201,7 +201,7 @@ class SideComponent extends Component {
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden mdDown implementation='css'>
+        <Hidden smDown implementation='css'>
           <Drawer
             variant='persistent'
             open
