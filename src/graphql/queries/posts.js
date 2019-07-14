@@ -2,8 +2,8 @@ import gql from 'graphql-tag'
 import { postFragment } from '../fragments'
 
 export const getAllPosts = gql`
-  query getAllPosts {
-    posts {
+  query getAllPosts($after: String) {
+    posts(first: 5, after: $after) {
       ...PostData
     }
   }
@@ -11,8 +11,8 @@ export const getAllPosts = gql`
 `
 
 export const getPostsByCat = gql`
-  query getPostsByCat($slug: String!) {
-    posts(where: { categoryName: $slug }) {
+  query getPostsByCat($slug: String, $after: String) {
+    posts(first: 5, after: $after, where: { categoryName: $slug }) {
       ...PostData
     }
   }

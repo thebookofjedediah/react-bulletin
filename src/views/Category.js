@@ -8,13 +8,14 @@ import { Helmet } from 'react-helmet'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import Error from '../components/Error'
 
-const Category = ({ data, viewtype, searchposts }) =>
-  RenderLayout(data, searchposts, viewtype)
+const Category = ({ data, match, viewtype, searchposts }) =>
+  RenderLayout(data, match, searchposts, viewtype)
 const AllPosts = ({ data, viewtype, searchposts }) =>
   RenderLayout(data, searchposts, viewtype)
-
-const RenderLayout = (data, viewtype) => {
+let queryString = ''
+const RenderLayout = (data, match, viewtype) => {
   const isLoading = !data.posts
+  if (match) queryString = match.params.slug
   return (
     <Layout>
       {!data.error && isLoading && <Loader />}
@@ -43,15 +44,21 @@ const CategoryError = () => {
 
 const RenderCategories = ({ data, searchposts, viewtype }) => {
   const posts = searchposts || data.posts
+
   return (
-    <div>
+    <>
       <Helmet>
         <title>
           Posts By Categories | Bulletin - Franciscan University of Steubenville
         </title>
       </Helmet>
-      <GridRenderer posts={posts} viewtype={viewtype} />
-    </div>
+      <GridRenderer
+        posts={posts}
+        viewtype={viewtype}
+        query={getPostsByCat}
+        where={queryString}
+      />
+    </>
   )
 }
 

@@ -57,7 +57,7 @@ class PostPreview extends React.Component {
     const regex = /(<([^>]+)>)/gi
     let newContent = content.replace(regex, '')
     if (!this.props.trim) return newContent
-    if (newContent.split(' ').length > 55) {
+    if (newContent.split(' ').length > 28) {
       newContent = newContent
         .split(' ')
         .slice(0, 55)
@@ -125,33 +125,27 @@ const CardView = ({
     <Card className={classes.card} style={style}>
       <CardImage mediaStyle={classes.media} imageURL={imageURL} slug={slug} />
       <CardContent>
-        <Typography
-          type='caption'
-          variant='h6'
-          className={classes.categoryColor}
-        >
+        <Typography variant='button' className={classes.categoryColor}>
           {category.toUpperCase()}
         </Typography>
-        <Typography type='headline' className={classes.titleColor} variant='h5'>
+        <Typography className={classes.titleColor} variant='h6'>
           <Link className={classes.link} to={`/post/${slug}`}>
             <SanitizedHTML html={title} />
           </Link>
         </Typography>
-        <Typography
-          className={classes.dateColor}
-          type='subheading'
-          variant='subtitle1'
-        >
+        <Typography className={classes.dateColor} variant='overline'>
           {postDate}
         </Typography>
-        <Typography type='body2' gutterBottom>
-          <SanitizedHTML html={content} />
-          {cRead && (
-            <Link className={classes.continue} to={`/post/${slug}`}>
-              {' '}
-              ...Continue Reading
-            </Link>
-          )}
+        <Typography variant='body1' gutterBottom>
+          <div>
+            <SanitizedHTML style={{ display: 'inline' }} html={content} />
+            {cRead && (
+              <Link className={classes.continue} to={`/post/${slug}`}>
+                {' '}
+                [...]
+              </Link>
+            )}
+          </div>
         </Typography>
       </CardContent>
     </Card>

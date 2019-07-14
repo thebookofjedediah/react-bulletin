@@ -3,7 +3,7 @@ import PostPreview from '../components/PostPreview'
 
 const PostRenderer = ({ posts }) => {
   return (
-    <div>
+    <>
       {posts.edges.map(post => (
         <PostPreview
           key={post.node.id}
@@ -15,7 +15,7 @@ const PostRenderer = ({ posts }) => {
           title={post.node.title}
         />
       ))}
-    </div>
+    </>
   )
 }
 
