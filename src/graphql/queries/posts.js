@@ -2,8 +2,12 @@ import gql from 'graphql-tag'
 import { postFragment } from '../fragments'
 
 export const getAllPosts = gql`
-  query getAllPosts {
-    posts {
+  query getAllPosts(
+    $first: Int
+    $after: String
+    $where: RootQueryToPostConnectionWhereArgs
+  ) {
+    posts(first: $first, after: $after, where: $where) {
       ...PostData
     }
   }
