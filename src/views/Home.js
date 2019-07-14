@@ -19,14 +19,16 @@ const Home = ({ data, viewtype, searchposts }) => {
 const RenderHome = ({ data, viewtype, searchposts }) => {
   const posts = searchposts || data.posts
   return (
-    <div>
+    <>
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
       {!data.error && !posts && <Loader />}
       {data.error && <Error error={data.error.message} />}
-      {posts && <GridRenderer posts={posts} viewtype={viewtype} />}
-    </div>
+      {posts && (
+        <GridRenderer posts={posts} viewtype={viewtype} query={getAllPosts} />
+      )}
+    </>
   )
 }
 
