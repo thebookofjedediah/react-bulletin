@@ -72,7 +72,7 @@ const styles = theme => ({
     fontSize: '16px'
   },
   content: {
-    width: '100%',
+    width: `calc(100% - ${drawerWidth + theme.spacing.unit * 3 * 2}px)`,
     padding: theme.spacing.unit * 3,
     marginTop: 56,
     [theme.breakpoints.up('md')]: {
