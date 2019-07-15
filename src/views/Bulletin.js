@@ -1,10 +1,13 @@
 import React from 'react'
 import { getAllPosts } from '../graphql/queries/posts'
+import dayjs from 'dayjs'
 import Layout from '../components/Layout/index'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
 
-const Home = ({ data, viewtype, searchposts }) => {
+const week = dayjs().startOf('week')
+
+const Bulletin = ({ data, viewtype, searchposts }) => {
   return (
     <Layout>
       <RenderHome data={data} viewtype={viewtype} searchposts={searchposts} />
@@ -13,7 +16,7 @@ const Home = ({ data, viewtype, searchposts }) => {
   )
 }
 
-const RenderHome = ({ data, viewtype }) => {
+const RenderHome = ({ data, viewtype, searchposts }) => {
   return (
     <>
       <Helmet>
@@ -21,13 +24,21 @@ const RenderHome = ({ data, viewtype }) => {
       </Helmet>
       <GridRenderer
         viewtype={viewtype}
-        variables={{
-          first: 5
-        }}
         query={getAllPosts}
+        variables={{
+          where: {
+            dateQuery: {
+              after: {
+                day: week.date(),
+                month: week.month() + 1,
+                year: week.year()
+              }
+            }
+          }
+        }}
       />
     </>
   )
 }
 
-export default Home
+export default Bulletin
