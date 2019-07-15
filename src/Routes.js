@@ -6,12 +6,14 @@ import Category, { allPosts } from './views/Category'
 import Home from './views/Home'
 import PostDetail from './views/PostDetail'
 import Help from './views/Help'
+import Bulletin from './views/Bulletin'
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/bulletin' component={Bulletin} />
         <Route exact path='/category/' component={allPosts} />
         <Route exact path='/category/:slug' component={Category} />
         <Route path='/post/:slug' component={PostDetail} />
