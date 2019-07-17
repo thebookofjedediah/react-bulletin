@@ -20,6 +20,7 @@ import Button from 'material-ui/Button'
 const displayCategories = props => {
   const { data, classes } = props
   if (data.loading) return
+  if (!data.categories.edges) return
 
   return (
     <div>
