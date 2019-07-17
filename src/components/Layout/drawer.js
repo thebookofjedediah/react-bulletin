@@ -20,7 +20,6 @@ import Button from 'material-ui/Button'
 const displayCategories = props => {
   const { data, classes } = props
   if (data.loading) return
-  if (!data.categories.edges) return
 
   return (
     <div>
@@ -29,17 +28,20 @@ const displayCategories = props => {
           <ListItemText secondary={`All`} />
         </ListItem>
       </Link>
-      {data.categories.edges.map(category => (
-        <Link
-          key={category.node.id}
-          to={`/category/${category.node.slug}`}
-          className={classes.link}
-        >
-          <ListItem button>
-            <ListItemText secondary={category.node.name} />
-          </ListItem>
-        </Link>
-      ))}
+      {data &&
+        data.categories &&
+        data.categories.edges &&
+        data.categories.edges.map(category => (
+          <Link
+            key={category.node.id}
+            to={`/category/${category.node.slug}`}
+            className={classes.link}
+          >
+            <ListItem button>
+              <ListItemText secondary={category.node.name} />
+            </ListItem>
+          </Link>
+        ))}
     </div>
   )
 }
