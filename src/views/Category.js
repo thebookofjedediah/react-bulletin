@@ -11,7 +11,7 @@ import Error from '../components/Error'
 const Category = ({ data, match, viewtype, searchposts }) =>
   RenderLayout(data, match, searchposts, viewtype)
 const AllPosts = ({ data, viewtype, searchposts }) =>
-  RenderLayout(data, searchposts, viewtype)
+  RenderLayout(data, null, searchposts, viewtype)
 let queryString = ''
 const RenderLayout = (data, match, viewtype) => {
   const isLoading = !data.posts

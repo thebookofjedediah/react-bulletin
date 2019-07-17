@@ -4,22 +4,22 @@ import ListView from './ListView'
 import PrintView from './PrintView'
 import Query from 'react-apollo/Query'
 
-const GridRenderer = ({ viewtype, query, variables }) => {
+const GridRenderer = ({ viewtype, query, posts, variables }) => {
   const grid = viewtype === 'grid'
 
-  return (
+  return posts == null ? (
     <Query notifyOnNetworkStatusChange query={query} variables={variables}>
       {({ data, loading, error, fetchMore }) => {
         if (error) return <p>{error.message}</p>
         const posts = data.posts
-        const loadFinished = false
+
         return (
           <>
             {viewtype === 'print' && (
               <PrintView
                 loading={loading}
                 posts={data.posts}
-                loadDone={loadFinished}
+                loadDone={false}
                 onLoadMore={() =>
                   fetchMore({
                     variables: {
@@ -47,7 +47,7 @@ const GridRenderer = ({ viewtype, query, variables }) => {
               <GridView
                 loading={loading}
                 posts={data.posts}
-                loadDone={loadFinished}
+                loadDone={false}
                 onLoadMore={() =>
                   fetchMore({
                     variables: {
@@ -75,7 +75,7 @@ const GridRenderer = ({ viewtype, query, variables }) => {
               <ListView
                 loading={loading}
                 posts={data.posts}
-                loadDone={loadFinished}
+                loadDone={false}
                 onLoadMore={() =>
                   fetchMore({
                     variables: {
@@ -103,6 +103,12 @@ const GridRenderer = ({ viewtype, query, variables }) => {
         )
       }}
     </Query>
+  ) : (
+    <div>
+      {viewtype === 'print' && <PrintView posts={posts} loadDone />}
+      {grid && <GridView posts={posts} loadDone />}
+      {!grid && viewtype !== 'print' && <ListView posts={posts} loadDone />}
+    </div>
   )
 }
 
