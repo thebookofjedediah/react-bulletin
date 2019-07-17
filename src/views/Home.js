@@ -22,7 +22,7 @@ const RenderHome = ({ data, viewtype }) => {
       <GridRenderer
         viewtype={viewtype}
         variables={{
-          first: 5
+          first: 15
         }}
         query={getAllPosts}
       />

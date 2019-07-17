@@ -142,7 +142,7 @@ const CardView = ({
             {cRead && (
               <Link className={classes.continue} to={`/post/${slug}`}>
                 {' '}
-                [...]
+                ...Continue Reading
               </Link>
             )}
           </div>

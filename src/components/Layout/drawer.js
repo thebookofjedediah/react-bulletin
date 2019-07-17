@@ -23,7 +23,7 @@ const displayCategories = props => {
 
   return (
     <div>
-      <Link to={`/category/`} className={classes.link}>
+      <Link to={`/all`} className={classes.link}>
         <ListItem button>
           <ListItemText secondary={`All`} />
         </ListItem>
@@ -128,7 +128,7 @@ class SideComponent extends Component {
       <div className={classes.drawerInner}>
         <div className={classes.drawerHeader}>
           <ListItem>
-            <Link to='/'>
+            <Link to='/all'>
               <img
                 className={classes.image}
                 alt='logo'

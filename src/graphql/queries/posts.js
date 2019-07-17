@@ -16,7 +16,7 @@ export const getAllPosts = gql`
 
 export const getPostsByCat = gql`
   query getPostsByCat($slug: String, $after: String) {
-    posts(first: 5, after: $after, where: { categoryName: $slug }) {
+    posts(first: 15, after: $after, where: { categoryName: $slug }) {
       ...PostData
     }
   }
