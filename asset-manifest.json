@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/student-bulletin-react/static/css/main.0c3f1983.chunk.css",
+    "main.js": "/student-bulletin-react/static/js/main.f88a715b.chunk.js",
+    "main.js.map": "/student-bulletin-react/static/js/main.f88a715b.chunk.js.map",
+    "runtime~main.js": "/student-bulletin-react/static/js/runtime~main.0dda7388.js",
+    "runtime~main.js.map": "/student-bulletin-react/static/js/runtime~main.0dda7388.js.map",
+    "static/css/2.d1403e1c.chunk.css": "/student-bulletin-react/static/css/2.d1403e1c.chunk.css",
+    "static/js/2.b04bee28.chunk.js": "/student-bulletin-react/static/js/2.b04bee28.chunk.js",
+    "static/js/2.b04bee28.chunk.js.map": "/student-bulletin-react/static/js/2.b04bee28.chunk.js.map",
+    "index.html": "/student-bulletin-react/index.html",
+    "precache-manifest.a8c73639a17b899c15fdc834804dbd27.js": "/student-bulletin-react/precache-manifest.a8c73639a17b899c15fdc834804dbd27.js",
+    "service-worker.js": "/student-bulletin-react/service-worker.js",
+    "static/css/2.d1403e1c.chunk.css.map": "/student-bulletin-react/static/css/2.d1403e1c.chunk.css.map",
+    "static/css/main.0c3f1983.chunk.css.map": "/student-bulletin-react/static/css/main.0c3f1983.chunk.css.map",
+    "static/media/index.css": "/student-bulletin-react/static/media/roboto-latin-900italic.bc833e72.woff"
+  }
+}
