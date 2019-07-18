@@ -1,6 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This is a Bulletin created to pull announcements from a WP page and display them on this site - it is build with React, Apollo, GraphQL, and in the future Node. It is styled with Material UI.
+### Current Live Site
+
+https://student-bulletin.herokuapp.com/
+
+Please see the issues or project section to add fixes. Pull requests welcome!
+
+This is a Bulletin created to pull announcements from a WP page and display them on this site - it is build with React, Apollo, and WP-GraphQL. It is styled with Material UI.
 
 ## Contributing
 
@@ -12,6 +18,5 @@ If you are interested in contributing to the project then checkout this repo. Yo
 > npm install or yarn install
 > npm start-front or yarn start-front
 ```
-
 
 Thanks for looking!
