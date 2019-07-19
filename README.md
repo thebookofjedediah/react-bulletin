@@ -16,7 +16,7 @@ If you are interested in contributing to the project then checkout this repo. Yo
 > git clone https://github.com/thebookofjedediah/student-bulletin-react
 > cd bulletin-react
 > npm install or yarn install
-> npm start-front or yarn start-front
+> npm start or yarn start
 ```
 
 Thanks for looking!

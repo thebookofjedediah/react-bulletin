@@ -153,7 +153,7 @@ class SideComponent extends Component {
           </ListItem>
         </Link>
         <Divider />
-        <Link to='/' className={classes.link}>
+        <Link to='/category/time-sensitive' className={classes.link}>
           <ListItem button>
             <ListItemIcon>
               <AlarmClock />

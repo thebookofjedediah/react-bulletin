@@ -4,6 +4,8 @@ import dayjs from 'dayjs'
 import Layout from '../components/Layout/index'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
+import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 const week = dayjs().startOf('week')
 
@@ -18,7 +20,7 @@ const Bulletin = ({ data, viewtype, searchposts }) => {
 
 const RenderHome = ({ data, viewtype, searchposts }) => {
   return (
-    <>
+    <div>
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
@@ -37,7 +39,12 @@ const RenderHome = ({ data, viewtype, searchposts }) => {
           }
         }}
       />
-    </>
+      <Link to={`/all`} className='view-all-posts'>
+        <Button variant='contained' className='view-all-button'>
+          View All Posts
+        </Button>
+      </Link>
+    </div>
   )
 }
 
