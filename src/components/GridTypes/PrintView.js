@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import PostPreview from '../PostPreview'
 
-class ListView extends React.Component {
+class PrintView extends React.Component {
   componentDidMount () {
     window.addEventListener('scroll', this.handleOnScroll)
     if (this.props.loadDone) this.setState({ loadingFinished: true })
@@ -28,7 +28,9 @@ class ListView extends React.Component {
         this.props.posts &&
         this.props.posts.pageInfo &&
         this.props.posts.pageInfo.hasNextPage
-      ) { this.props.onLoadMore() }
+      ) {
+        this.props.onLoadMore()
+      }
     }
   }
 
@@ -38,7 +40,6 @@ class ListView extends React.Component {
       <div>
         <Grid container justify='center'>
           <Grid item xs={12}>
-            <h1>This Week{"'"}s Bulletin</h1>
             {this.props.posts &&
               this.props.posts.edges.map(post => (
                 <PostPreview
@@ -56,4 +57,4 @@ class ListView extends React.Component {
   }
 }
 
-export default ListView
+export default PrintView

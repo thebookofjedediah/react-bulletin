@@ -3,6 +3,7 @@ import { getAllPosts } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
+import Typography from '@material-ui/core/Typography'
 
 const Home = ({ data, viewtype, searchposts }) => {
   return (
@@ -19,6 +20,9 @@ const RenderHome = ({ ...props }) => {
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
+      <Typography variant='h6' gutterBottom>
+        All Posts
+      </Typography>
       <GridRenderer
         variables={{
           first: 15
