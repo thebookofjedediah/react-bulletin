@@ -5,8 +5,8 @@ import Layout from '../components/Layout/index'
 import Loader from '../components/Loader'
 import { Helmet } from 'react-helmet'
 import Typography from '@material-ui/core/Typography'
-import { blue, grey } from 'material-ui/colors'
-import { withStyles } from 'material-ui/styles'
+import { blue, grey } from '@material-ui/core/colors'
+import { withStyles } from '@material-ui/core/styles'
 import BackIcon from '@material-ui/icons/ArrowBackIos'
 import Button from '@material-ui/core/Button'
 import { withRouter } from 'react-router-dom'
@@ -48,7 +48,6 @@ const PostDetail = ({ data, classes, ...props }) => {
 }
 
 const RenderPost = ({ data, classes, ...props }) => {
-  console.log(props)
   const post = data.postBy
   const date = new Date(post.date).toLocaleDateString()
   return (
@@ -66,7 +65,7 @@ const RenderPost = ({ data, classes, ...props }) => {
       <Typography type='caption' variant='h6' className={classes.categoryColor}>
         {post.categories.edges[0].node.name.toUpperCase()}
       </Typography>
-      <Typography type='headline' className={classes.titleColor} variant='h4'>
+      <Typography type='h5' className={classes.titleColor} variant='h4'>
         {post.title}
       </Typography>
       <Typography type='subheading' variant='subtitle1'>
@@ -74,7 +73,7 @@ const RenderPost = ({ data, classes, ...props }) => {
       </Typography>
 
       <Typography
-        type='body1'
+        type='body2'
         component='div'
         dangerouslySetInnerHTML={{ __html: post.content }}
       />

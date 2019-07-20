@@ -1,8 +1,8 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
-import { red } from 'material-ui/colors'
+import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import { red } from '@material-ui/core/colors'
 
 const styles = theme => ({
   root: {

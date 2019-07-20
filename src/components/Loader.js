@@ -1,7 +1,7 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
-import { withStyles } from 'material-ui/styles'
-import { CircularProgress } from 'material-ui/Progress'
+import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const styles = theme => ({
   root: {
@@ -20,7 +20,7 @@ const Loader = props => {
       alignItems='center'
     >
       <Grid item xs={4} sm={3} md={2}>
-        <CircularProgress size={100} />
+        <CircularProgress />
       </Grid>
     </Grid>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
+import Grid from '@material-ui/core/Grid'
 import Loader from '../Loader'
 import PostPreview from '../PostPreview'
 
@@ -33,7 +33,9 @@ class ListView extends React.Component {
         this.props.posts &&
         this.props.posts.pageInfo &&
         this.props.posts.pageInfo.hasNextPage
-      ) { this.props.onLoadMore() }
+      ) {
+        this.props.onLoadMore()
+      }
     }
   }
 

@@ -1,21 +1,24 @@
 import React, { Component } from 'react'
 import { getAllCategories } from '../../graphql/queries/categories'
-import Drawer from 'material-ui/Drawer'
-import Hidden from 'material-ui/Hidden'
-import Divider from 'material-ui/Divider'
-import IconButton from 'material-ui/IconButton'
-import ChevronLeftIcon from 'material-ui-icons/ChevronLeft'
-import ListSubheader from 'material-ui/List/ListSubheader'
-import ClockIcon from 'material-ui-icons/AccessTime'
-import { ListItem, ListItemText, ListItemIcon } from 'material-ui/List'
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import Divider from '@material-ui/core/Divider'
+import IconButton from '@material-ui/core/IconButton'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ListSubheader from '@material-ui/core/ListSubheader'
+import ClockIcon from '@material-ui/icons/AccessTime'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { Link } from 'react-router-dom'
-import AlarmClock from 'material-ui-icons/Alarm'
+import AlarmClock from '@material-ui/icons/Alarm'
 import { graphql } from 'react-apollo'
-import Input, { InputLabel } from 'material-ui/Input'
-import { MenuItem } from 'material-ui/Menu'
-import { FormControl } from 'material-ui/Form'
-import Select from 'material-ui/Select'
-import Button from 'material-ui/Button'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
+import Select from '@material-ui/core/Select'
+import Button from '@material-ui/core/Button'
 
 const displayCategories = props => {
   const { data, classes } = props
@@ -55,7 +58,6 @@ class SideComponent extends Component {
     }
   }
   handleChange = name => event => {
-    console.log(event)
     this.setState({ [name]: event.target.value })
   }
 
@@ -122,7 +124,7 @@ class SideComponent extends Component {
           </FormControl>
         </ListItem>
         <ListItem>
-          <Button raised type='submit'>
+          <Button variant='outlined' type='submit'>
             SUBMIT
           </Button>
         </ListItem>
@@ -159,7 +161,7 @@ class SideComponent extends Component {
             <ListItemIcon>
               <AlarmClock />
             </ListItemIcon>
-            <ListItemText inset secondary='Take Action' />
+            <ListItemText secondary='Take Action' />
           </ListItem>
         </Link>
         <Divider />
@@ -170,7 +172,7 @@ class SideComponent extends Component {
           <ListItemIcon>
             <ClockIcon />
           </ListItemIcon>
-          <ListItemText inset secondary='Filter By Date' />
+          <ListItemText secondary='Filter By Date' />
         </ListItem>
         {form}
         <Divider />
@@ -197,7 +199,7 @@ class SideComponent extends Component {
             classes={{
               paper: classes.drawerPaper
             }}
-            onRequestClose={this.props.handleDrawerToggle}
+            onClose={this.props.handleDrawerToggle}
             ModalProps={{
               keepMounted: true // Better open performance on mobile.
             }}

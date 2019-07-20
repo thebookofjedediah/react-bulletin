@@ -48,7 +48,9 @@ const styles = theme => ({
     marginRight: 20
   },
   typo: {
-    marginLeft: 15
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: 15
+    }
   },
   hide: {
     display: 'none'
@@ -73,7 +75,7 @@ const styles = theme => ({
   },
   content: {
     width: `100%`,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     marginTop: 56,
     [theme.breakpoints.up('md')]: {
       marginTop: 64,

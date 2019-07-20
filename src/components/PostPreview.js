@@ -1,8 +1,10 @@
 import React from 'react'
-import Card, { CardContent, CardMedia } from 'material-ui/Card'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import { withStyles } from 'material-ui/styles'
-import { blue, grey } from 'material-ui/colors'
+import { withStyles } from '@material-ui/core/styles'
+import { blue, grey } from '@material-ui/core/colors'
 import { Link } from 'react-router-dom'
 import SanitizedHTML from 'react-sanitized-html'
 
@@ -136,7 +138,7 @@ const CardView = ({
         <Typography className={classes.dateColor} variant='overline'>
           {postDate}
         </Typography>
-        <Typography variant='body1' gutterBottom>
+        <Typography component='div' variant='body2' gutterBottom>
           <div>
             <SanitizedHTML style={{ display: 'inline' }} html={content} />
             {cRead && (

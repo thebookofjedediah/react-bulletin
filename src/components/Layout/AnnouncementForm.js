@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Drawer from 'material-ui/Drawer'
-import { withStyles } from 'material-ui/styles'
-import { blue, yellow } from 'material-ui/colors'
-import CloseIcon from 'material-ui-icons/Close'
-import IconButton from 'material-ui/IconButton'
+import Drawer from '@material-ui/core/Drawer'
+import { withStyles } from '@material-ui/core/styles'
+import { blue, yellow } from '@material-ui/core/colors'
+import CloseIcon from '@material-ui/icons/Close'
+import IconButton from '@material-ui/core/IconButton'
 import JotformEmbed from 'react-jotform-embed'
 
 const styles = theme => ({
@@ -41,7 +41,7 @@ class AnnouncementForm extends Component {
       <Drawer
         anchor='bottom'
         open={this.props.btnDrawerOpen}
-        onRequestClose={this.props.toggleDrawer}
+        onClose={this.props.toggleDrawer}
       >
         <div className={classes.padding}>
           <IconButton className={classes.closeButton}>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import Drawer from 'material-ui/Drawer'
-import Typography from 'material-ui/Typography'
-import TextField from 'material-ui/TextField'
-import { withStyles } from 'material-ui/styles'
-import { blue, yellow } from 'material-ui/colors'
-import Button from 'material-ui/Button'
-import Input from 'material-ui/Input'
-import CloseIcon from 'material-ui-icons/Close'
-import IconButton from 'material-ui/IconButton'
+import Drawer from '@material-ui/core/Drawer'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import { withStyles } from '@material-ui/core/styles'
+import { blue, yellow } from '@material-ui/core/colors'
+import Button from '@material-ui/core/Button'
+import Input from '@material-ui/core/Input'
+import CloseIcon from '@material-ui/icons/Close'
+import IconButton from '@material-ui/core/IconButton'
 
 const styles = theme => ({
   textfield: {
@@ -44,20 +44,16 @@ class AnnouncementForm extends Component {
       <Drawer
         anchor='bottom'
         open={this.props.btnDrawerOpen}
-        onRequestClose={this.props.toggleDrawer}
+        onClose={this.props.toggleDrawer}
       >
         <div className={classes.padding}>
           <IconButton className={classes.closeButton}>
             <CloseIcon onClick={this.props.toggleDrawer} />
           </IconButton>
-          <Typography
-            className={classes.marginTop}
-            type='display1'
-            align='center'
-          >
+          <Typography className={classes.marginTop} type='h4' align='center'>
             Submit your Announcement
           </Typography>
-          <Typography type='subheading' align='center'>
+          <Typography type='subtitle1' align='center'>
             New announcements will be made on Monday. The deadline for next
             upload is 2:00pm Friday.
           </Typography>
@@ -100,7 +96,11 @@ class AnnouncementForm extends Component {
             />
 
             <label htmlFor='file'>
-              <Button raised component='span' className={classes.button}>
+              <Button
+                variant='contained'
+                component='span'
+                className={classes.button}
+              >
                 Upload
               </Button>
             </label>
@@ -124,7 +124,11 @@ class AnnouncementForm extends Component {
             />
 
             <center>
-              <Button type='submit' raised className={classes.button}>
+              <Button
+                type='submit'
+                variant='contained'
+                className={classes.button}
+              >
                 {this.state.btnText}
               </Button>
             </center>
