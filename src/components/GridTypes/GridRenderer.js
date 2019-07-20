@@ -3,6 +3,8 @@ import GridView from './GridView'
 import ListView from './ListView'
 import PrintView from './PrintView'
 import Query from 'react-apollo/Query'
+import Typography from '@material-ui/core/Typography'
+import Loader from '../Loader'
 
 const GridRenderer = ({ viewtype, query, posts, variables, searchposts }) => {
   const grid = viewtype === 'grid'
@@ -11,7 +13,16 @@ const GridRenderer = ({ viewtype, query, posts, variables, searchposts }) => {
     <Query notifyOnNetworkStatusChange query={query} variables={variables}>
       {({ data, loading, error, fetchMore }) => {
         if (error) return <p>{error.message}</p>
+        if (loading) return <Loader />
         const posts = searchposts || data.posts
+
+        if (posts && !posts.edges.length) {
+          return (
+            <Typography>
+              No current posts found for the given criteria.
+            </Typography>
+          )
+        }
 
         const loadMore = () => {
           if (searchposts) return
