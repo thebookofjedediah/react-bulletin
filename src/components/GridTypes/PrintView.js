@@ -24,7 +24,11 @@ class ListView extends React.Component {
       document.documentElement.clientHeight || window.innerHeight
     var scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight
     if (scrolledToBottom) {
-      if (this.props.posts.pageInfo.hasNextPage) this.props.onLoadMore()
+      if (
+        this.props.posts &&
+        this.props.posts.pageInfo &&
+        this.props.posts.pageInfo.hasNextPage
+      ) { this.props.onLoadMore() }
     }
   }
 

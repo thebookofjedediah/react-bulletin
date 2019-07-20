@@ -5,6 +5,7 @@ import Layout from '../components/Layout/index'
 import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
 import Button from '@material-ui/core/Button'
+import Box from '@material-ui/core/Box'
 import { Link } from 'react-router-dom'
 
 const week = dayjs().startOf('week')
@@ -39,11 +40,13 @@ const RenderHome = props => {
         }}
         {...props}
       />
-      <Link to={`/all`} className='view-all-posts'>
-        <Button variant='contained' className='view-all-button'>
-          View All Posts
-        </Button>
-      </Link>
+      <Box display='flex' justifyContent='center' alignItems='center'>
+        <Link to={`/all`} className='view-all-posts'>
+          <Button variant='text' className='view-all-button'>
+            View All Posts
+          </Button>
+        </Link>
+      </Box>
     </div>
   )
 }

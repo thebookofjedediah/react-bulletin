@@ -7,7 +7,9 @@ import { Helmet } from 'react-helmet'
 import Typography from '@material-ui/core/Typography'
 import { blue, grey } from 'material-ui/colors'
 import { withStyles } from 'material-ui/styles'
-// import { Link } from "react-router-dom";
+import BackIcon from '@material-ui/icons/ArrowBackIos'
+import Button from '@material-ui/core/Button'
+import { withRouter } from 'react-router-dom'
 // import '../styles/app.css'
 
 const styles = {
@@ -32,7 +34,7 @@ const styles = {
   }
 }
 
-const PostDetail = ({ data, classes }) => {
+const PostDetail = ({ data, classes, ...props }) => {
   const isLoading = data.loading
   return (
     <Layout>
@@ -40,12 +42,13 @@ const PostDetail = ({ data, classes }) => {
         <title>Loading... - Franciscan University of Steubenville</title>
       </Helmet>
       {isLoading && <Loader />}
-      {!isLoading && <RenderPost data={data} classes={classes} />}
+      {!isLoading && <RenderPost data={data} classes={classes} {...props} />}
     </Layout>
   )
 }
 
-const RenderPost = ({ data, classes }) => {
+const RenderPost = ({ data, classes, ...props }) => {
+  console.log(props)
   const post = data.postBy
   const date = new Date(post.date).toLocaleDateString()
   return (
@@ -75,12 +78,18 @@ const RenderPost = ({ data, classes }) => {
         component='div'
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+      <Button onClick={props.history.goBack}>
+        <BackIcon />
+        Go Back
+      </Button>
     </div>
   )
 }
 
-export default withStyles(styles)(
-  graphql(SinglePostDetail, {
-    options: ({ match }) => ({ variables: { slug: match.params.slug } })
-  })(PostDetail)
+export default withRouter(
+  withStyles(styles)(
+    graphql(SinglePostDetail, {
+      options: ({ match }) => ({ variables: { slug: match.params.slug } })
+    })(PostDetail)
+  )
 )
