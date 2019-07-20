@@ -18,14 +18,13 @@ const Bulletin = ({ data, viewtype, searchposts }) => {
   )
 }
 
-const RenderHome = ({ data, viewtype, searchposts }) => {
+const RenderHome = props => {
   return (
     <div>
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
       <GridRenderer
-        viewtype={viewtype}
         query={getAllPosts}
         variables={{
           where: {
@@ -38,6 +37,7 @@ const RenderHome = ({ data, viewtype, searchposts }) => {
             }
           }
         }}
+        {...props}
       />
       <Link to={`/all`} className='view-all-posts'>
         <Button variant='contained' className='view-all-button'>

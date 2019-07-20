@@ -13,18 +13,18 @@ const Home = ({ data, viewtype, searchposts }) => {
   )
 }
 
-const RenderHome = ({ data, viewtype }) => {
+const RenderHome = ({ ...props }) => {
   return (
     <>
       <Helmet>
         <title>Home | Bulletin - Franciscan University of Steubenville</title>
       </Helmet>
       <GridRenderer
-        viewtype={viewtype}
         variables={{
           first: 15
         }}
         query={getAllPosts}
+        {...props}
       />
     </>
   )

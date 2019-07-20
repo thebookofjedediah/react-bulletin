@@ -38,13 +38,15 @@ class Layout extends Component {
   }
 
   handleSearchSubmit = () => {
-    if (this.state.searchText === '') this.setState({ searchText: ' ' })
-    this.props.client
-      .query({
-        query: PostSearchQuery,
-        variables: { search: this.state.searchText }
-      })
-      .then(res => this.setState({ searchPosts: res.data.posts }))
+    if (this.state.searchText === '') this.setState({ searchPosts: undefined })
+    else {
+      this.props.client
+        .query({
+          query: PostSearchQuery,
+          variables: { search: this.state.searchText }
+        })
+        .then(res => this.setState({ searchPosts: res.data.posts }))
+    }
   }
   handleSearchToggle = () => {
     this.setState(state => ({ showSearch: !this.state.showSearch }))
