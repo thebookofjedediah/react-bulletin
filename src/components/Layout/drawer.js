@@ -67,7 +67,13 @@ class SideComponent extends Component {
       return yearsArray
     }
     const form = (
-      <form style={this.state.formStyles}>
+      <form
+        style={this.state.formStyles}
+        onSubmit={e => {
+          e.preventDefault()
+          this.props.handleFilterDate(this.state.month, this.state.year)
+        }}
+      >
         <ListItem>
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor='month'>Month</InputLabel>
@@ -116,12 +122,7 @@ class SideComponent extends Component {
           </FormControl>
         </ListItem>
         <ListItem>
-          <Button
-            raised
-            onClick={() =>
-              this.props.handleFilterDate(this.state.month, this.state.year)
-            }
-          >
+          <Button raised type='submit'>
             SUBMIT
           </Button>
         </ListItem>
