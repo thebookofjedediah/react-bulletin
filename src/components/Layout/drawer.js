@@ -221,7 +221,7 @@ class SideComponent extends Component {
   toggleForm = () => [
     this.setState({
       formStyles: {
-        display: 'block'
+        display: this.state.formStyles.display === 'block' ? 'none' : 'block'
       }
     })
   ]
