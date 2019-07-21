@@ -61,8 +61,8 @@ class ListView extends React.Component {
               />
             ))}
           </Grid>
-          {this.props.loading && <Loader />}
         </Grid>
+        {this.props.loading && <Loader />}
       </>
     )
   }

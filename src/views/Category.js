@@ -1,50 +1,27 @@
 import React from 'react'
-import { graphql } from 'react-apollo'
-import { getPostsByCat, getAllPosts } from '../graphql/queries/posts'
-import Loader from '../components/Loader'
+import Typography from '@material-ui/core/Typography'
+import { getPostsByCat } from '../graphql/queries/posts'
 import Layout from '../components/Layout/index'
+import capitalize from 'lodash.capitalize'
+import lowercase from 'lodash.lowercase'
+import GridRenderer from '../components/GridTypes/GridRenderer'
 import { Helmet } from 'react-helmet'
 
-import GridRenderer from '../components/GridTypes/GridRenderer'
-import Error from '../components/Error'
-
-const Category = ({ data, match, viewtype, searchposts }) =>
-  RenderLayout(data, match, searchposts, viewtype)
-const AllPosts = ({ data, viewtype, searchposts }) =>
-  RenderLayout(data, null, searchposts, viewtype)
-let queryString = ''
-const RenderLayout = (data, match, viewtype) => {
-  const isLoading = !data.posts
-  if (match) queryString = match.params.slug
+const Home = ({ data, viewtype, searchposts, ...props }) => {
   return (
     <Layout>
-      {!data.error && isLoading && <Loader />}
-      {data.error && <Error error={data.error.message} />}
-      {!isLoading && data.posts.edges.length === 0 && <CategoryError />}
-      {!isLoading && data.posts.edges.length > 0 && (
-        <RenderCategories data={data} viewtype={viewtype} />
-      )}
+      <RenderHome
+        data={data}
+        viewtype={viewtype}
+        searchposts={searchposts}
+        {...props}
+      />
+      <span />
     </Layout>
   )
 }
 
-const CategoryError = () => {
-  return (
-    <div>
-      <Helmet>
-        <title>
-          Category Doesn{"'"}t Exist | Bulletin - Franciscan University of
-          Steubenville
-        </title>
-      </Helmet>
-      <div>The category you are searching for does not exist</div>
-    </div>
-  )
-}
-
-const RenderCategories = ({ data, searchposts, viewtype }) => {
-  const posts = searchposts || data.posts
-
+const RenderHome = ({ ...props }) => {
   return (
     <>
       <Helmet>
@@ -52,18 +29,18 @@ const RenderCategories = ({ data, searchposts, viewtype }) => {
           Posts By Categories | Bulletin - Franciscan University of Steubenville
         </title>
       </Helmet>
+      <Typography variant='h6' gutterBottom>
+        {capitalize(lowercase(props.match.params.slug))}
+      </Typography>
       <GridRenderer
-        posts={posts}
-        viewtype={viewtype}
+        variables={{
+          slug: props.match.params.slug
+        }}
         query={getPostsByCat}
-        where={queryString}
+        {...props}
       />
     </>
   )
 }
 
-export default graphql(getPostsByCat, {
-  options: ({ match }) => ({ variables: { slug: match.params.slug } })
-})(Category)
-
-export const allPosts = graphql(getAllPosts)(AllPosts)
+export default Home

@@ -13,8 +13,8 @@ const GridRenderer = ({ viewtype, query, posts, variables, searchposts }) => {
     <Query notifyOnNetworkStatusChange query={query} variables={variables}>
       {({ data, loading, error, fetchMore }) => {
         if (error) return <p>{error.message}</p>
-        if (loading) return <Loader />
         const posts = searchposts || data.posts
+        if (loading && !posts) return <Loader />
 
         if (posts && !posts.edges.length) {
           return (
