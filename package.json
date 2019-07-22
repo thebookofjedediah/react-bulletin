@@ -61,7 +61,6 @@
       "git add"
     ]
   },
-  "homepage": "https://thebookofjedediah.github.io/student-bulletin-react",
   "standard": {
     "globals": [
       "fetch",
