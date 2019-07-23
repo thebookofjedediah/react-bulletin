@@ -58,6 +58,7 @@ class ListView extends React.Component {
                 title={post.node.title}
                 category={post.node.categories.edges[0].node.name}
                 content={post.node.excerpt}
+                trim
               />
             ))}
           </Grid>
