@@ -15,6 +15,7 @@ export const postFragment = gql`
         date
         slug
         excerpt
+        content
         categories {
           edges {
             node {

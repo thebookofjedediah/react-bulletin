@@ -46,7 +46,7 @@ class PrintView extends React.Component {
                   view='print'
                   key={post.node.id}
                   title={post.node.title}
-                  content={post.node.excerpt}
+                  content={post.node.content}
                 />
               ))}
           </Grid>
