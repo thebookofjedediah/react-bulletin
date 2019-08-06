@@ -34,3 +34,8 @@ header {
 .view-all-posts {
   text-decoration: none;
 }
+
+h6.MuiTypography-root.MuiTypography-h6.MuiTypography-gutterBottom {
+  color: grey;
+  font-weight: 400;
+}

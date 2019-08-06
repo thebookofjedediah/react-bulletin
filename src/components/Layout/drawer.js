@@ -180,11 +180,6 @@ class SideComponent extends Component {
         >
           <ListItemText secondary={'Submit Announcement'} />
         </ListItem>
-        <Link to='/help' className={classes.link}>
-          <ListItem button>
-            <ListItemText secondary={'Help'} />
-          </ListItem>
-        </Link>
       </div>
     )
     return (

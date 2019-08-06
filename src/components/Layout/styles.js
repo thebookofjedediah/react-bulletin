@@ -102,6 +102,9 @@ const styles = theme => ({
   },
   formControl: {
     width: '100%'
+  },
+  viewTitle: {
+    color: 'grey'
   }
 })
 
