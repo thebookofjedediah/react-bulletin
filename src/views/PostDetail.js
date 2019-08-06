@@ -58,7 +58,7 @@ const RenderPost = ({ data, classes, ...props }) => {
       {post.featuredImage && (
         <img
           alt=''
-          style={{ height: '600px', width: '800px' }}
+          style={{ height: '600px', width: '800px', objectFit: 'cover' }}
           src={post.featuredImage.sourceUrl}
         />
       )}
