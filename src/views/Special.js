@@ -10,28 +10,30 @@ const Special = () => (
     <section className='help-page'>
       <h2>Special Bulletins – Student Life Bulletin</h2>
       <p>
-        Special bulletin requests should be sent to the Student Life Bulletin
-        email (
-        <a href='studentlifebulletin@student.franciscan.edu'>
-          studentlifebulletin@student.franciscan.edu
-        </a>
-        ) or Mary Raskob (
-        <a href='mraskob@franciscan.edu'>mraskob@franciscan.edu</a>). The
-        request should consist of the exact language/wording of the bulletin
-        along with any applicable contact information. Consideration of a
-        special, student wide bulletin communication outside of the normal
-        weekly Student Life Bulletin will be made by the Assistant Director of
-        Student Life – Communication with consultation from the Vice President
-        for Student Life. Special Bulletins should be reserved for extraordinary
-        events that effect the entire student body. If the communication does
-        not warrant a special bulletin, the announcement will be included in
-        that week’s Student Life Bulletin.
+        A Special Bulletin, sent as an email to the entire student body outside
+        of the normal weekly Student Life Bulletin, will be made by the
+        Assistant Director of Student Life – Communication with consultation
+        from the Vice President for Student Life. Special Bulletins are reserved
+        for extraordinary events that effect the entire student body. If the
+        communication does not warrant a special bulletin, the announcement will
+        be considered for inclusion in the next Student Life Bulletin.
         <br />
         <br />
-        <br />
+        If you would like to request a Special Bulletin, include the following
+        in an email to Mary Raskob, at{' '}
+        <a href='mailto:mraskob@franciscan.edu'>mraskob@franciscan.edu</a>.
+        <ul>
+          <li>Exact wording of the bulletin</li>
+          <li>
+            Name and relevant contact information of the person or campus group
+            requesting the bulletin
+          </li>
+          <li>Any relevant attachments</li>
+        </ul>
       </p>
+      <br />
 
-      <Link to={`/`}>
+      <Link to={`/`} className='fix-link'>
         <h3>Take me back to the Bulletin</h3>
       </Link>
     </section>

@@ -5,6 +5,7 @@ import { blue, yellow } from '@material-ui/core/colors'
 import CloseIcon from '@material-ui/icons/Close'
 import IconButton from '@material-ui/core/IconButton'
 import JotformEmbed from 'react-jotform-embed'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   textfield: {
@@ -49,6 +50,12 @@ class AnnouncementForm extends Component {
           </IconButton>
 
           <JotformEmbed src='https://form.jotform.com/91895433142157' />
+
+          <Typography type='subtitle1' align='center'>
+            Special bulletins may be sent between regular Student Life
+            Bulletins. Learn more about special bulletins and how to request
+            them <a href='/special'>here</a>.
+          </Typography>
         </div>
       </Drawer>
     )
