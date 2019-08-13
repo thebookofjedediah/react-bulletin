@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 
 // Import Views
 import Category from './views/Category'
@@ -11,7 +11,7 @@ import Special from './views/Special'
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact path='/' component={Bulletin} />
         <Route exact path='/all' component={Home} />
@@ -20,7 +20,7 @@ const Routes = () => {
         <Route exact path='/help' component={Help} />
         <Route exact path='/special' component={Special} />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
