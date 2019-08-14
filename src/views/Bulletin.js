@@ -24,7 +24,7 @@ const RenderHome = props => {
   return (
     <div>
       <Helmet>
-        <title>Home | Bulletin - Franciscan University of Steubenville</title>
+        <title>Home | Bulletin</title>
       </Helmet>
       <Typography variant='h6' gutterBottom>
         Current Bulletin

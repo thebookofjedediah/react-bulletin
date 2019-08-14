@@ -18,7 +18,7 @@ const RenderHome = ({ ...props }) => {
   return (
     <>
       <Helmet>
-        <title>Home | Bulletin - Franciscan University of Steubenville</title>
+        <title>Home | Bulletin</title>
       </Helmet>
       <Typography variant='h6' gutterBottom>
         All Posts

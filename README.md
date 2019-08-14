@@ -2,9 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Current Live Site
 
-https://student-bulletin.herokuapp.com/
+https://focused-lumiere-2d56c7.netlify.com
 
-Please see the issues or project section to add fixes. Pull requests welcome!
+Originally built to allow for students on a campus to have a place for all bulletin announcements and to submit their own, this project can have more uses with having a custom blog look or being a part of a much larger website.
+
+Pull requests welcome!
 
 This is a Bulletin/Blog created to pull posts from a WP page and display them on this site - it is build with React, Apollo, and WP-GraphQL. It is styled with Material UI.
 

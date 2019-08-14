@@ -25,9 +25,7 @@ const RenderHome = ({ ...props }) => {
   return (
     <>
       <Helmet>
-        <title>
-          Posts By Categories | Bulletin - Franciscan University of Steubenville
-        </title>
+        <title>Posts By Categories</title>
       </Helmet>
       <Typography variant='h6' gutterBottom>
         {capitalize(lowercase(props.match.params.slug))}

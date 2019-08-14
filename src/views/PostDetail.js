@@ -39,7 +39,7 @@ const PostDetail = ({ data, classes, ...props }) => {
   return (
     <Layout>
       <Helmet>
-        <title>Loading... - Franciscan University of Steubenville</title>
+        <title>Loading... </title>
       </Helmet>
       {isLoading && <Loader />}
       {!isLoading && <RenderPost data={data} classes={classes} {...props} />}
@@ -53,7 +53,7 @@ const RenderPost = ({ data, classes, ...props }) => {
   return (
     <div>
       <Helmet>
-        <title>{post.title} - Franciscan University of Steubenville</title>
+        <title>{post.title}</title>
       </Helmet>
       {post.featuredImage && (
         <img
