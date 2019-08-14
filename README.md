@@ -6,7 +6,7 @@ https://student-bulletin.herokuapp.com/
 
 Please see the issues or project section to add fixes. Pull requests welcome!
 
-This is a Bulletin created to pull announcements from a WP page and display them on this site - it is build with React, Apollo, and WP-GraphQL. It is styled with Material UI.
+This is a Bulletin/Blog created to pull posts from a WP page and display them on this site - it is build with React, Apollo, and WP-GraphQL. It is styled with Material UI.
 
 ## Contributing
 
@@ -15,7 +15,7 @@ If you are interested in contributing to the project then checkout this repo. Yo
 ```
 > git clone https://github.com/thebookofjedediah/student-bulletin-react
 > cd bulletin-react
-> npm install or yarn install
+> npm install or yarn
 > npm start or yarn start
 ```
 

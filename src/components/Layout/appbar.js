@@ -50,7 +50,7 @@ const TopBar = ({
             className={classNames(classes.flex, classes.typo)}
             noWrap
           >
-            Student Life Bulletin
+            Bulletin/Blog Title
           </Typography>
 
           {showSearch ? (

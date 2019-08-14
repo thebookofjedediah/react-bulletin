@@ -19,7 +19,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
-import fuslogo from './img/fuslogo.png'
+import JedLogo from './img/JedLogo.png'
 
 const displayCategories = props => {
   const { data, classes } = props
@@ -136,7 +136,7 @@ class SideComponent extends Component {
         <div className={classes.drawerHeader}>
           <ListItem>
             <Link to='/all'>
-              <img className={classes.image} alt='logo' src={fuslogo} />
+              <img className={classes.image} alt='logo' src={JedLogo} />
             </Link>
           </ListItem>
           <IconButton
