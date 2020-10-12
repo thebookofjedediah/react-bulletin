@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Current Live Site
 
-https://focused-lumiere-2d56c7.netlify.com
+https://bulletin.franciscan.online/
 
 Originally built to allow for students on a campus to have a place for all bulletin announcements and to submit their own, this project can have more uses with having a custom blog look or being a part of a much larger website.
 
